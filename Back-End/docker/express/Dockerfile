@@ -9,4 +9,4 @@ COPY ../.. .
 
 EXPOSE 3000
 
-CMD ["npm", "start"]
+CMD ["sh", "-c", "npx node-pg-migrate up && npm start"]

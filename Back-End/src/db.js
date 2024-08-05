@@ -1,4 +1,6 @@
-const pgp = require("pg-promise")(/*options*/)
-const db = pgp("postgres://username:password@host:port/database")
+require('dotenv').config()
+const pgp = require("pg-promise")()
+
+const db = pgp(process.env.DATABASE_URL)
 
 module.exports = db

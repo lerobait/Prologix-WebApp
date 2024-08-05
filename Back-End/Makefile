@@ -13,4 +13,3 @@ start:
 
 stop:
 	docker rm -f $$(docker ps -q --filter name=prologix_)
-
