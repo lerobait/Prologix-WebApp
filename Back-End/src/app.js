@@ -1,7 +1,7 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const { loadOrUpdateProducts } = require('./utils/productScheduler');
+const { loadOrUpdateProducts } = require('./utils/productLoader');
 const cron = require('node-cron');
 const createError = require('http-errors');
 const path = require('path');
