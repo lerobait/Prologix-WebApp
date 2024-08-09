@@ -12,4 +12,4 @@ function ensureArray(data) {
     return Array.isArray(data) ? data : [data];
   }
   
-export default ensureArray;
+module.exports = ensureArray;

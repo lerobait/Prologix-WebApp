@@ -35,8 +35,15 @@ class ProductController {
     }
 
     // Add pagination
-    query += ' LIMIT $2 OFFSET $3';
-    queryParams.push(Number(limit), Number(offset));
+    if (categories) {
+      // Categories are provided, so LIMIT and OFFSET use $2 and $3
+      query += ' LIMIT $2 OFFSET $3';
+      queryParams.push(Number(limit), Number(offset));
+    } else {
+      // No categories, so LIMIT and OFFSET use $1 and $2
+      query += ' LIMIT $1 OFFSET $2';
+      queryParams.push(Number(limit), Number(offset));
+}
 
     try {
       // Query the database to fetch all products
