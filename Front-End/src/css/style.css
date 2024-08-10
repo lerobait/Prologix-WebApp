@@ -1,0 +1,312 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    list-style: none;
+    text-decoration: none;
+}
+
+body {
+    background: linear-gradient(to bottom, #212429, #1F2731, #2C3E50, #4A5568);
+}
+
+/* Style for the header */
+header {
+    height: 70px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to right, #101926, #2D2D2F, #4F4C55);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2%;
+    box-shadow: 0 5px 10px;
+    z-index: 1000;
+}
+
+header .logo {
+    transition: .5s;
+}
+
+header .logo:hover {
+    transform: scale(1.1);
+}
+
+/* Navigation menu items */
+header nav ul li {
+    position: relative;
+    float: left;
+}
+
+header nav ul li a {
+    padding: 25px;
+    color: white;
+    font-size: 17px;
+    display: block;
+}
+
+header nav ul li a:hover {
+    background: black;
+}
+
+/* Icons in the header */
+#icons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+._icon-heart,
+._icon-balance-scale {
+    position: relative;
+    color: #ffffff;
+    font-size: 25px;
+    top: 3px;
+}
+
+._icon-sign-in-alt {
+    position: relative;
+    color: #ffffff;
+    font-size: 30px;
+    padding: 0 20px 0 0;
+    top: 3px;
+}
+
+main {
+    margin-top: 70px;
+}
+
+/* Video section styling */
+#elements {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    margin-top: 70px;
+}
+
+#elements video {
+    position: absolute;
+    width: 94%;
+    height: auto;
+    max-height: 300px;
+    border-radius: 15px;
+    object-fit: cover;
+    z-index: -1;
+}
+
+#content {
+    display: flex;
+    justify-content: space-between;
+    height: 100vh;
+    padding: 0 3%;
+}
+
+/* Filters section styling */
+#filters {
+    width: 25%;
+    height: 12%;
+    background-color: #B1B8D3;
+    padding: 20px;
+    border-radius: 15px;
+    transition: height .3s ease;
+    box-shadow: 0 5px 15px;
+}
+
+.filter-button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: #343434;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: left;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.filter-button.active {
+    background-color: #555;
+}
+
+/* Arrow icon for filter button */
+.filter-button::after {
+    content: ' \25BC';
+    float: right;
+    font-size: 12px;
+    margin-left: 10px;
+}
+
+.filter-button.active::after {
+    content: ' \25B2';
+}
+
+.filter-list {
+    display: none;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.filter-list li {
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.filter-list li:hover {
+    background-color: #eee;
+}
+
+#products {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 72%;
+}
+
+/* Categories section styling */
+#categories {
+    height: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #B1B8D3;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px;
+    margin-bottom: 35px;
+}
+
+#categories button {
+    width: 110px;
+    height: 130px;
+    border: none;
+    background: none;
+    font-size: 50px;
+    cursor: pointer;
+}
+
+#next-button {
+    position: relative;
+    border-left: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+#prev-button {
+    position: relative;
+    border-right: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+#categories button img {
+    width: 100%;
+    height: auto;
+}
+
+#list-images {
+    width: 800px;
+    display: flex;
+    overflow: hidden;
+    overflow-x: scroll;
+}
+
+/* Hide scrollbar for image list */
+#list-images::-webkit-scrollbar {
+    display: none;
+}
+
+#list-images a img {
+    width: 180px;
+    height: 180px;
+    margin: 10px;
+    border-radius: 30px;
+    box-shadow: 0 5px 15px #101926;
+    transition: transform 0.3s ease, z-index 0.3s ease;
+}
+
+#list-images a img:hover {
+    transform: scale(1.1);
+    z-index: 10;
+}
+
+/* Search container styling */
+#search-container {
+    width: 80%;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+#search {
+    width: 100%;
+    padding: 15px 50px 15px 30px;
+    border-radius: 15px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+._icon-search {
+    position: absolute;
+    right: 20px;
+    font-size: 20px;
+    color: #000;
+}
+
+#scroll-to-top {
+    position: fixed;
+    bottom: 70px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: #101926;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: opacity 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 2;
+}
+
+/* Show scroll-to-top button when scrolled down */
+#scroll-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Footer styling */
+footer {
+    background: #101926;
+    color: #ffffff;
+    padding: 20px;
+}
+
+footer p {
+    padding: 10px 40px;
+}
+
+#footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    position: relative;
+}
+
+#footer-copyright {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: #ffffff;
+}
