@@ -1,5 +1,18 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Filter button functionality
+    // Function to update the height of the filters section based on the active filters
+    function updateFiltersHeight(filterButton, filtersSection) {
+        const activeFilterList = document.querySelector('.filter-list.show');
+        const activeSubFilterLists = activeFilterList ? activeFilterList.querySelectorAll('.sub-filter-list.show') : [];
+        let totalHeight = filterButton.scrollHeight + (activeFilterList ? activeFilterList.scrollHeight : 0);
+
+        activeSubFilterLists.forEach(subFilterList => {
+            totalHeight += subFilterList.scrollHeight;
+        });
+
+        filtersSection.style.height = `${totalHeight + 40}px`;
+    }
+
+    // Filter functionality
     const filterButton = document.querySelector('.filter-button');
     const filtersSection = document.querySelector('#filters');
     const filterList = filterButton.nextElementSibling;
@@ -7,23 +20,64 @@ document.addEventListener('DOMContentLoaded', function() {
     filterButton.addEventListener('click', function() {
         const isActive = this.classList.contains('active');
 
-        // Hide all filter lists and remove active class from all buttons
         document.querySelectorAll('.filter-list').forEach(list => {
-            list.style.display = 'none';
+            list.classList.remove('show');
+            list.classList.add('hide');
         });
 
         document.querySelectorAll('.filter-button').forEach(btn => {
             btn.classList.remove('active');
         });
 
-        // Show the filter list and add active class to the button
         if (!isActive) {
-            filterList.style.display = 'block';
+            filterList.style.display = 'block'; // Ensure display is set to block
+            filterList.classList.remove('hide');
+            filterList.classList.add('show');
             this.classList.add('active');
-            filtersSection.style.height = `${filterButton.scrollHeight + filterList.scrollHeight + 60}px`;
         } else {
-            filtersSection.style.height = '12%';
+            filterList.classList.remove('show');
+            filterList.classList.add('hide');
         }
+
+        updateFiltersHeight(filterButton, filtersSection);
+    });
+
+    // Close filter list when animation ends
+    filterList.addEventListener('animationend', function(event) {
+        if (event.animationName === 'slideBottomUp') {
+            filterList.style.display = 'none';
+        }
+    });
+
+    // Sub-filter functionality
+    document.querySelectorAll('.sub-filter-button').forEach(button => {
+        button.addEventListener('click', function() {
+            const subFilterList = this.nextElementSibling;
+            const isActive = this.classList.contains('active');
+
+            if (!isActive) {
+                subFilterList.style.display = 'block'; // Ensure display is set to block
+                subFilterList.classList.remove('hide');
+                subFilterList.classList.add('show');
+                this.classList.add('active');
+            } else {
+                subFilterList.classList.remove('show');
+                subFilterList.classList.add('hide');
+                subFilterList.style.display = 'none';
+                this.classList.remove('active');
+            }
+
+            updateFiltersHeight(filterButton, filtersSection);
+        });
+    });
+
+    // Close sub-filter list when animation ends
+    document.querySelectorAll('.sub-filter-list').forEach(subFilterList => {
+        subFilterList.addEventListener('animationend', function(event) {
+            if (event.animationName === 'slideBottomUp') {
+                subFilterList.style.display = 'none';
+            }
+        });
     });
 
     // Image navigation functionality
@@ -66,7 +120,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     updateButtons();
 
-
     // Scroll-to-top button functionality
     const scrollToTopButton = document.getElementById('scroll-to-top');
 
@@ -84,5 +137,34 @@ document.addEventListener('DOMContentLoaded', function() {
             top: 0,
             behavior: 'smooth'
         });
+    });
+
+    // Mobile menu functionality
+    const mobileMenuIcon = document.getElementById('mobile-menu-icon');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    mobileMenuIcon.addEventListener('click', function() {
+        if (mobileMenu.classList.contains('show')) {
+            mobileMenu.classList.remove('show');
+            mobileMenu.classList.add('hide');
+        } else {
+            mobileMenu.style.display = 'block';
+            mobileMenu.classList.remove('hide');
+            mobileMenu.classList.add('show');
+        }
+    });
+
+    document.addEventListener('click', function(event) {
+        if (!mobileMenu.contains(event.target) && !mobileMenuIcon.contains(event.target)) {
+            mobileMenu.classList.remove('show');
+            mobileMenu.classList.add('hide');
+        }
+    });
+
+    // Close mobile menu when animation ends
+    mobileMenu.addEventListener('animationend', function(event) {
+        if (event.animationName === 'slideUp') {
+            mobileMenu.style.display = 'none';
+        }
     });
 });
