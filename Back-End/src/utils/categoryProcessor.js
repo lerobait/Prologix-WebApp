@@ -1,8 +1,10 @@
-// Author: Artem Nikulin
+// Authors: Artem Nikulin & Nikonov Kirill
 
 const AppError = require('../utils/appError');
 const { saveProducts } = require('../models/saveProducts');
 const { fetchProducts } = require('./fetchProducts');
+const ensureArray = require('../utils/ensureArray');
+const prologix_brand_id = 49;
 
 /**
  * Processes a category by fetching products and saving them to the database.
@@ -23,9 +25,13 @@ const processCategory = async (categoryId) => {
       products.DCLink.offers &&
       products.DCLink.offers.offer
     ) {
-      const filteredProducts = products.DCLink.offers.offer.filter(
-        (product) => product.brand_id == 49
-      );
+
+      // Ensure that 'offer' is always an array
+      const offers = ensureArray(products.DCLink.offers.offer);
+
+      // Filter the products to include only those with the specified brand ID
+      const filteredProducts = offers.filter((product) => product.brand_id == prologix_brand_id);
+
       // Process each product
       for (const product of filteredProducts) {
         // Transform the product data into the format expected by the database
@@ -55,18 +61,12 @@ const processCategory = async (categoryId) => {
             : parseInt(product.length, 10),
           description: product.description || '',
           change_at: product.change_at || null,
-          image_link:
-            product.image_link && product.image_link.picture
-              ? product.image_link.picture
-              : [],
-          tags:
-            product.tags && product.tags.param
-              ? product.tags.param.map((tag) => ({
-                  id: tag.$.id || '',
-                  name: tag.$.name || '',
-                  value: tag._ || '',
-                }))
-              : [],
+          image_link: ensureArray(product.image_link?.picture || []),
+          tags: ensureArray(product.tags?.param || []).map((tag) => ({
+            id: tag.$.id || '',
+            name: tag.$.name || '',
+            value: tag._ || '',
+          })),
         };
 
         // Save the transformed product data to the database
