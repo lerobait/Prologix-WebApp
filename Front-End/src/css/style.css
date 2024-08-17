@@ -180,7 +180,8 @@ main {
     content: ' \25B2';
 }
 
-.filter-list {
+.filter-list,
+.sub-filter-list {
     display: none;
     list-style: none;
     padding: 0;
@@ -188,12 +189,13 @@ main {
     opacity: 0;
 }
 
-.filter-list li {
+.filter-list li,
+.sub-filter-list li{
     padding: 5px;
     background-color: #fff;
     border: 1px solid #ddd;
     cursor: pointer;
-    font-size: 1vw;
+    font-size: 14px;
     border-radius: 3px;
 }
 
@@ -201,22 +203,24 @@ main {
     background-color: #eee;
 }
 
-.filter-list.show {
+.filter-list.show,
+.sub-filter-list.show {
     display: block;
     will-change: opacity, transform;
-    animation: slideTopDown 0.3s ease-out forwards;
+    animation: slideTopDown 0.2s ease-out forwards;
 }
 
-.filter-list.hide {
+.filter-list.hide,
+.sub-filter-list.hide {
     will-change: opacity, transform;
-    animation: slideBottomUp 0.3s ease-out forwards;
+    animation: slideBottomUp 0.2s ease-out forwards;
 }
 
 /* Sub-filters section styling */
 .sub-filter-button {
     display: block;
     width: 100%;
-    padding: 16px 16px;
+    padding: 16px;
     font-size: 14px;
     background: none;
     color: black;
@@ -236,33 +240,13 @@ main {
     color: white;
 }
 
-.sub-filter-list {
-    display: none;
-    list-style: none;
-    padding: 0;
-}
-
-.sub-filter-list li {
-    padding: 5px;
-    background-color: #eee;
-    border: 1px solid #ddd;
-    cursor: pointer;
-    font-size: 14px;
-}
-
 .sub-filter-list li:hover {
     background-color: #ddd;
 }
 
-.sub-filter-list.show {
-    display: block;
-    will-change: opacity, transform;
-    animation: slideTopDown 0.3s ease-out forwards;
-}
-
-.sub-filter-list.hide {
-    will-change: opacity, transform;
-    animation: slideBottomUp 0.3s ease-out forwards;
+.sub-filter-list li a {
+    color: black;
+    text-decoration: none;
 }
 
 #products {
@@ -464,21 +448,21 @@ footer p {
  }
 
 /* Media queries for responsive design */
-@media (max-width: 1200px), (max-height: 800px) {
+@media (max-width: 1200px) {
     #list-images a img {
         width: 180px;
         height: 180px;
     }
 }
 
-@media (max-width: 992px), (max-height: 600px) {
+@media (max-width: 992px) {
     #list-images a img {
         width: 140px;
         height: 140px;
     }
 }
 
-@media (max-width: 768px), (max-height: 400px) {
+@media (max-width: 768px) {
     ._icon-balance-scale,
     ._icon-heart,
     nav {

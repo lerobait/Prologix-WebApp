@@ -2,14 +2,37 @@ document.addEventListener('DOMContentLoaded', function() {
     // Function to update the height of the filters section based on the active filters
     function updateFiltersHeight(filterButton, filtersSection) {
         const activeFilterList = document.querySelector('.filter-list.show');
-        const activeSubFilterLists = activeFilterList ? activeFilterList.querySelectorAll('.sub-filter-list.show') : [];
-        let totalHeight = filterButton.scrollHeight + (activeFilterList ? activeFilterList.scrollHeight : 0);
+        const activeSubFilterLists = activeFilterList ? activeFilterList
+            .querySelectorAll('.sub-filter-list.show') : [];
+        let totalHeight = filterButton.scrollHeight + 89;
 
-        activeSubFilterLists.forEach(subFilterList => {
-            totalHeight += subFilterList.scrollHeight;
-        });
+        // Check if the device is mobile
+        const isMobile = window.innerWidth <= 768;
 
-        filtersSection.style.height = `${totalHeight + 40}px`;
+        if (isMobile) {
+            totalHeight -= 20;
+        }
+
+        if (activeFilterList) {
+            const filterButtons = activeFilterList
+                .querySelectorAll('.sub-filter-button');
+
+            filterButtons.forEach(button => {
+                totalHeight += button.scrollHeight;
+            });
+        }
+
+        if (activeSubFilterLists.length > 0) {
+            activeSubFilterLists.forEach(subFilterList => {
+                totalHeight += subFilterList.scrollHeight;
+            });
+        }
+
+        if (!activeFilterList && activeSubFilterLists.length === 0) {
+            totalHeight = filterButton.scrollHeight + (isMobile ? 20 : 40);
+        }
+
+        filtersSection.style.height = `${totalHeight}px`;
     }
 
     // Filter functionality
@@ -30,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         if (!isActive) {
-            filterList.style.display = 'block'; // Ensure display is set to block
+            filterList.style.display = 'block';
             filterList.classList.remove('hide');
             filterList.classList.add('show');
             this.classList.add('active');
@@ -44,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Close filter list when animation ends
     filterList.addEventListener('animationend', function(event) {
-        if (event.animationName === 'slideBottomUp') {
+        if (event.animationName === 'slideBottomUp' && !filterList.classList.contains('show')) {
             filterList.style.display = 'none';
         }
     });
@@ -56,14 +79,13 @@ document.addEventListener('DOMContentLoaded', function() {
             const isActive = this.classList.contains('active');
 
             if (!isActive) {
-                subFilterList.style.display = 'block'; // Ensure display is set to block
+                subFilterList.style.display = 'block';
                 subFilterList.classList.remove('hide');
                 subFilterList.classList.add('show');
                 this.classList.add('active');
             } else {
                 subFilterList.classList.remove('show');
                 subFilterList.classList.add('hide');
-                subFilterList.style.display = 'none';
                 this.classList.remove('active');
             }
 
@@ -71,10 +93,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Close sub-filter list when animation ends
     document.querySelectorAll('.sub-filter-list').forEach(subFilterList => {
         subFilterList.addEventListener('animationend', function(event) {
-            if (event.animationName === 'slideBottomUp') {
+            if (event.animationName === 'slideBottomUp' && !filterList.classList.contains('hide')) {
                 subFilterList.style.display = 'none';
             }
         });
