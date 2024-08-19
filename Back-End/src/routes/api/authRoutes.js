@@ -2,7 +2,7 @@ require('dotenv').config()
 
 const express = require('express')
 const router = express.Router()
-const service = require('../../services/authService')
+const service = require('../../controllers/authController')
 const authenticateToken = require('../../utils/authenticateToken')
 
 // Registration rout

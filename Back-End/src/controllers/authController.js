@@ -2,7 +2,7 @@ require('dotenv').config()
 
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
-const manager = require('../managers/userManager')
+const manager = require('../models/userManager')
 
 // Registration rout logic
 const registration = async user => {

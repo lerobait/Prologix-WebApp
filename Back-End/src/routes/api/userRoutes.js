@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const authenticateToken = require('../../utils/authenticateToken')
-const service = require('../../services/userService')
+const service = require('../../controllers/userController')
 
 router.get('/user', authenticateToken, async (req, res) => {
     const user = await service.getUser(req.user.login)
