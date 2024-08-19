@@ -5,6 +5,8 @@ const { loadOrUpdateProducts } = require('./utils/productLoader');
 const cron = require('node-cron');
 const createError = require('http-errors');
 const path = require('path');
+const swaggerUi = require('swagger-ui-express');
+const swaggerSpec = require('./swagger')
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -34,6 +36,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/api/doc', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use('/api', productRouter);
 app.use('/api', authRouter);
 app.use('/api', userRouter);
