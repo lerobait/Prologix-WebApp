@@ -1,38 +1,41 @@
-// Author: Artem Nikulin
+// Author: Artem Nikulin, Anna Geenko
 
 header
-  a.logo(href="index.html")
-    img(src="/img/logo.png" alt="Logo" width="260px" height="65px")
-  nav
-    ul
-      li
-        a(href="index.html") Головна
-      li
-        a(href="about.html") Про нас
-      li
-        a(href="components.html") Компоненти
-      li
-        a(href="info.html") Інформація
-  .icons
-    a(href="#" class="_icon-heart")
-    a(href="#" class="_icon-balance-scale")
-    a(href="#" class="_icon-list" id="mobile-menu-icon")
-    a(href="#" class="_icon-sign-in-alt")
-  #mobile-menu.mobile-menu
-    ul
-      li
-        a(href="index.html")
-          span._icon-home
-          |  Головна
-      li
-        a(href="about.html")
-          span._icon-users
-          |  Про нас
-      li
-        a(href="components.html")
-          span._icon-seedling
-          |  Компоненти
-      li
-        a(href="info.html")
-          span._icon-exclamation-circle
-          |  Інформація
+    a.logo(href="index.html")
+        img(src="/img/logo.png" alt="Logo" width="260px" height="65px")
+    nav
+        ul
+            li
+                a(href="index.html") Головна
+            li
+                a(href="about.html") Про нас
+            li
+                a(href="components.html") Компоненти
+            li
+                a(href="info.html") Інформація
+    .icons
+        label.switch
+            input(type="checkbox")
+            span.move
+        a(href="#" class="_icon-heart")
+        a(href="#" class="_icon-balance-scale")
+        a(href="#" class="_icon-list" id="mobile-menu-icon")
+        a(href="#" class="_icon-sign-in-alt")
+    #mobile-menu.mobile-menu
+        ul
+            li
+                a(href="index.html")
+                    span._icon-home
+                    |  Головна
+            li
+                a(href="about.html")
+                    span._icon-users
+                    |  Про нас
+            li
+                a(href="components.html")
+                    span._icon-seedling
+                    |  Компоненти
+            li
+                a(href="info.html")
+                    span._icon-exclamation-circle
+                    |  Інформація
