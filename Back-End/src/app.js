@@ -6,8 +6,7 @@ const cron = require('node-cron');
 const createError = require('http-errors');
 const path = require('path');
 
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
+const viewRouter = require('./routes/viewRoutes');
 const productRouter = require('./routes/productRoutes');
 const authRouter = require('./routes/api/authRoutes');
 
@@ -22,19 +21,19 @@ cron.schedule('0 0 * * *', async () => {
 });
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, 'views'));
+
+app.use(express.static(path.join(__dirname, '../public')));
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/', viewRouter);
 app.use('/api', productRouter);
-app.use('/api', authRouter)
+app.use('/api', authRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
