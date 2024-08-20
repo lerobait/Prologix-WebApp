@@ -5,10 +5,13 @@ const { loadOrUpdateProducts } = require('./utils/productLoader');
 const cron = require('node-cron');
 const createError = require('http-errors');
 const path = require('path');
+const swaggerUi = require('swagger-ui-express');
+const swaggerSpec = require('./swagger')
 
 const viewRouter = require('./routes/viewRoutes');
 const productRouter = require('./routes/productRoutes');
 const authRouter = require('./routes/api/authRoutes');
+const userRouter = require('./routes/api/userRoutes');
 
 const app = express();
 
@@ -32,8 +35,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use('/', viewRouter);
+app.use('/api/doc', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use('/api', productRouter);
 app.use('/api', authRouter);
+app.use('/api', userRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
