@@ -1,0 +1,111 @@
+// Author: Artem Nikulin, Anna Geenko
+
+extends base
+
+block content
+    main
+        section#elements
+            video(src="/video/prologix.mp4" autoplay muted loop)
+
+        #content
+            section#filters
+                button.filter-button#big Категорії
+                ul.filter-list
+                    li
+                        button.sub-filter-button Комп'ютери та комплектуючі
+                            span._icon-chevron-right
+                        ul.sub-filter-list
+                            li
+                                a(href="#") SSD-накопичувачі
+                            li
+                                a(href="#") Комп'ютери
+                            li
+                                a(href="#") Корпуси для ПК
+                            li
+                                a(href="#") Монітори
+                            li
+                                a(href="#") Моноблоки
+                            li
+                                a(href="#") Ноутбуки
+                            li
+                                a(href="#") Оперативна пам'ять для ПК і ноутбуків
+                            li
+                                a(href="#") Сервери
+                    li
+                        button.sub-filter-button Аксесуари та периферія
+                            span._icon-chevron-right
+                        ul.sub-filter-list
+                            li
+                                a(href="#") Акумуляторні батареї
+                            li
+                                a(href="#") Аксесуари для торгового обладнання
+                            li
+                                a(href="#") Аксесуари до електротранспорту
+                            li
+                                a(href="#") Геймпади, джойстики, керма
+                            li
+                                a(href="#") Грошові скрині
+                            li
+                                a(href="#") Док-станції для ноутбуків
+                            li
+                                a(href="#") Запчастини до електротранспорту
+                            li
+                                a(href="#") Захисні плівки та скло до телефонів
+                            li
+                                a(href="#") Кабелі мультимедійні та перехідники (адаптери)
+                            li
+                                a(href="#") Кабелі синхронізації та перехідники (адаптери)
+                            li
+                                a(href="#") Підставки та кріплення для мобільних пристроїв
+                            li
+                                a(href="#") Мережеві фільтри, подовжувачі та адаптери
+                    li
+                        button.sub-filter-button Електроніка та пристрої
+                            span._icon-chevron-right
+                        ul.sub-filter-list
+                            li
+                                a(href="#") Джерела безперебійного живлення (ДБЖ)
+                            li
+                                a(href="#") Сканери штрих-кодів
+
+            section#products
+                #categories
+                    button#prev-button._icon-chevron-left
+                    #list-images
+                        .image-container
+                            p.image-title Комп'ютери
+                            a(href="#")
+                                img(src="/img/rounded-in-photoretrica.png" alt="PC picture")
+                        .image-container
+                            p.image-title Ноутбуки
+                            a(href="#")
+                                img(src="/img/laptop.png" alt="Laptop picture")
+                        .image-container
+                            p.image-title Монітори
+                            a(href="#")
+                                img(src="/img/monitors.png" alt="Monitor picture")
+                        .image-container
+                            p.image-title Моноблоки
+                            a(href="#")
+                                img(src="/img/monoblocks.png" alt="Monoblocks picture")
+                        .image-container
+                            p.image-title Корпуси
+                            a(href="#")
+                                img(src="/img/cases.png" alt="Cases picture")
+                        .image-container
+                            p.image-title SSD
+                            a(href="#")
+                                img(src="/img/ssd.png" alt="SSD picture")
+                        .image-container
+                            p.image-title Оперативна пам'ять
+                            a(href="#")
+                                img(src="/img/ram.png" alt="RAM picture")
+                    button#next-button._icon-chevron-right
+
+                #search-container
+                    input#search(type="text" placeholder="Пошук...")
+                    span._icon-search
+
+                #container-product
+
+            button#scroll-to-top._icon-arrow-circle-up

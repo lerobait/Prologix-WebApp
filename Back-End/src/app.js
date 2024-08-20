@@ -8,8 +8,7 @@ const path = require('path');
 const swaggerUi = require('swagger-ui-express');
 const swaggerSpec = require('./swagger')
 
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
+const viewRouter = require('./routes/viewRoutes');
 const productRouter = require('./routes/productRoutes');
 const authRouter = require('./routes/api/authRoutes');
 const userRouter = require('./routes/api/userRoutes');
@@ -25,17 +24,17 @@ cron.schedule('0 0 * * *', async () => {
 });
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, 'views'));
+
+app.use(express.static(path.join(__dirname, '../public')));
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/', viewRouter);
 app.use('/api/doc', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use('/api', productRouter);
 app.use('/api', authRouter);
