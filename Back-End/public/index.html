@@ -8,6 +8,15 @@
     <link rel="icon" href="./img/logo-icon-2.png" type="image/png">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/iconsFont.css">
+    <script>
+        (function() {
+            const savedTheme = sessionStorage.getItem('theme');
+            if (savedTheme) {
+                document.body.classList.add(savedTheme);
+            }
+            document.body.style.visibility = 'visible';
+        })();
+    </script>
 </head>
 <body>
     <header>
@@ -28,7 +37,8 @@
             <a href="#" class="_icon-heart nav-icons"></a>
             <a href="#" class="_icon-balance-scale nav-icons"></a>
             <a href="#" class="_icon-list" id="mobile-menu-icon"></a>
-            <a href="#" class="_icon-sign-in-alt"></a>
+            <a href="authorization.html" class="_icon-sign-in-alt"></a>
+            <a href="cabinet.html" class="_icon-globe"></a>
         </div>
         <div id="mobile-menu" class="mobile-menu">
             <ul>
@@ -150,7 +160,7 @@
                         </div>
                     </div>
         
-                    <div class="item card-link">
+                    <!--<div class="item card-link">
                         <img src="./img/ram.png" alt="RAM picture">
                         <div id="main-info">
                             <p class="card-text">
@@ -165,7 +175,7 @@
                                 <a href="#" class="_icon-balance-scale card-icon"></a>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                 </div>
             </section>
         </div>
