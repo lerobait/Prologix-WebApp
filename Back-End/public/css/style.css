@@ -1,4 +1,4 @@
-/* Author: Anna Geenko */
+/* Author: Anna Geenko, Yana Levchenko */
 
 * {
     margin: 0;
@@ -164,6 +164,18 @@ p.light {
 
 footer.light {
     background: #B1B8D3;
+}
+
+#product-name.light {
+    color: black;
+}
+
+.tabs a.light {
+    color: black;
+}
+
+.tabs li a:hover, .tabs li.active a.light {
+    border-bottom: black solid 2px;
 }
 
 /* Icons in the header */
@@ -447,6 +459,7 @@ main {
     position: relative;
     display: flex;
     align-items: center;
+    margin-bottom: 13px;
 }
 
 #search {
@@ -555,11 +568,243 @@ footer p {
      }
  }
 
+ /*Product cards on the main page*/
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 30px;
+    margin-top: 20px;
+    height: 40%;
+    padding: 0px 10px;
+}
+
+.grid-container > div {
+  background-color: #b1b8d3;
+  display: flex;
+  padding: 20px 0;
+  font-size: 24px;
+}
+
+.item > img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    margin-left: 20px;
+}
+
+.item {
+    grid-column: 1 / span 3;
+    border-radius: 10px;
+    box-sizing: border-box;
+    height: 270px;
+    max-width: 1237px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.card-text {
+    line-height: 1.5;
+    height: 6em;
+    margin-left: 50px;
+    margin-bottom: 55px;
+    overflow: auto;
+    word-break: break-word;
+    -webkit-line-clamp: 100;
+    -webkit-box-orient: vertical;
+    overflow-wrap: break-word;
+    text-overflow: ellipsis;
+}
+
+.name {
+    margin-bottom: 60px;
+}
+
+.card-icon {
+    margin-right: 20px;
+}
+
+#icons {
+    margin-left: 830px;
+}
+
+.card-link {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/* Styling for card.html */
+
+/* Tabs styling */ 
+.tabs-container {
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 25px 0px 25px 0px;
+    font-size: 18px;
+    color: white;
+}
+
+.tabs {
+  display: flex;
+}
+
+.tabs li a {
+    color: white;
+    display: block;
+    position: relative;
+    border-radius: 2px 2px 0 0;
+    opacity: 0.7;
+    transition: all 0.1s ease-in-out;
+    border: none;
+    top: 4px;
+    padding: 10px 25px;
+}
+
+.tabs li:not(:last-child) {
+    margin-right: 7px;
+}
+
+.tabs li a:hover, .tabs li.active a {
+    border-bottom: white solid 2px;
+    top: 0;
+    opacity: 1;
+}
+
+.panel {
+    display: none;
+}
+
+.panel.active {
+    display: block;
+}
+
+.product-info {
+    padding: 25px;
+    border-radius: 0 4px 4px 4px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Name of product */
+#info {
+    margin-top: 40px;
+    margin-right: 20vh;
+}
+
+#product-name {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: white;
+    margin-top: 22%;
+}
+
+/* Slideshow styling */
+#slideshow {
+    width: 60%;
+}
+
+#slideshow img {
+    vertical-align: middle;
+}
+  
+.container {
+    position: relative;
+    width: 60%;
+    margin-top: 10%;
+    margin-left: 30%;
+}
+  
+.slide {
+    display: none;
+}
+  
+.prev, .next {
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    -webkit-user-select: none;
+    cursor: pointer;
+    position: absolute;
+    top: 40%;
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+}
+  
+.next {
+    border-radius: 3px 0 0 3px;
+    right: 0;
+}
+  
+.column {
+    width: 16.66%;
+    float: left;
+}
+  
+.thumbnail {
+    cursor: pointer;
+    opacity: 0.6;
+}
+  
+.row:after {
+    display: table;
+    content: "";
+    clear: both;
+}
+  
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+  
+.active, .thumbnail:hover {
+    opacity: 1;
+}
+
+.main-container {
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 /* Media queries for responsive design */
+@media (max-width: 1600px) {
+    .card-text {
+        margin-bottom: 5%;
+        font-size: 22px;
+    }
+
+    .item {
+        height: 230px;
+    }
+
+    #icons {
+        margin-left: 77%;
+    }
+}
+
 @media (max-width: 1200px) {
     #list-images a img {
         width: 180px;
         height: 180px;
+    }
+
+    #icons {
+        margin-left: 69%;
+    }
+
+    .card-icon {
+        margin-right: 10px;
+    }
+
+    .card-text {
+        margin-bottom: 5%;
+        font-size: 22px;
+    }
+
+    .item {
+        height: 230px;
     }
 }
 
@@ -568,11 +813,45 @@ footer p {
         width: 140px;
         height: 140px;
     }
+
+    #info {
+        margin-left: 9.5vw;
+        margin-right: 10%;
+    }
+
+    .container {
+        width: 95%;
+        margin-top: 20%;
+        margin-left: 12%;
+    }
+
+    #slideshow {
+        width: 95%;
+    }
+
+    .prev, .next {
+        font-size: 18px;
+        padding: 10px;
+        top: 35%;
+        margin-top: 0;
+    }
+
+    .item {
+        height: 210px;
+    }
+
+    .card-text {
+        margin-bottom: 4%;
+        font-size: 21px;
+    }
+
+    #icons {
+        margin-left: 72%;
+    }
 }
 
 @media (max-width: 768px) {
-    ._icon-balance-scale,
-    ._icon-heart,
+    .nav-icons,
     nav {
         display: none;
     }
@@ -694,5 +973,55 @@ footer p {
     .footer-copyright {
         position: static;
         margin-top: 20px;
+    }
+
+    .tabs-container {
+        font-size: 16px;
+    }
+
+    #product-name {
+        font-size: 20px;
+    }
+
+    #content {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 40px;
+    }
+
+    #info {
+        margin-right: 29.5vw;
+    }
+
+    .container {
+        width: 80%;
+        margin-top: 20%;
+        margin-left: 12%;
+        position: static;
+    }
+
+    #slideshow {
+        width: 90%;
+    }
+
+    .prev, .next {
+        font-size: 16px;
+        padding: 10px;
+        top: 35%;
+        margin-top: 0;
+    }
+
+    .next {
+        right: 14%;
+    }
+
+    .item {
+        height: 180px;
+    }
+
+    .card-text {
+        margin-bottom: 2%;
+        font-size: 20px;
     }
 }

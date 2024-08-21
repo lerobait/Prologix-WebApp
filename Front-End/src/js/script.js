@@ -189,3 +189,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+//Clickability of the product card on the home page
+
+const cardLinks = document.querySelectorAll('.card-link');
+
+cardLinks.forEach((link) => {
+  link.addEventListener('click', () => {
+    window.location.href = 'card.html';
+  });
+});
