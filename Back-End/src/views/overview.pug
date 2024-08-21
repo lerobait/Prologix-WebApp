@@ -1,5 +1,3 @@
-// Author: Artem Nikulin, Anna Geenko, Yana Levchenko
-
 extends base
 
 block content
@@ -106,18 +104,20 @@ block content
                     input#search(type="text" placeholder="Пошук...")
                     span._icon-search
 
-                .grid-container
-                    each product in products
-                        .item.card-link
-                            img(src=`${product.image_link.picture}` alt=`${product.title}`)
-                            #main-info
-                                p.card-text
-                                    span #{product.title}
-                                    br
-                                    br
-                                    | #{product.description}
-                                #icons
-                                    a.card-icon._icon-heart(href='#')
-                                    a.card-icon._icon-balance-scale(href='#')
+                //- .grid-container
+                //-     each product in products
+                //-         .item.card-link
+                //-             img(src=product.image_link[0] alt=product.title)
+                //-             #main-info
+                //-                 p.card-text
+                //-                     span #{product.title}
+                //-                     br
+                //-                     br
+                //-                     | #{product.description}
+                //-                 #icons
+                //-                     a.card-icon._icon-heart(href='#')
+                //-                     a.card-icon._icon-balance-scale(href='#')
 
             button#scroll-to-top._icon-arrow-circle-up
+        script(src="./js/switch.js")
+        
