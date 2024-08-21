@@ -1,0 +1,12 @@
+each product in products
+  .item.card-link
+      img(src=product.image_link[0] alt=product.title)
+      #main-info
+          p.card-text
+              span #{product.title}
+              br
+              br
+              | #{product.description}
+          #icons
+              a.card-icon._icon-heart(href='#')
+              a.card-icon._icon-balance-scale(href='#')
