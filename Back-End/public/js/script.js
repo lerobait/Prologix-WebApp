@@ -142,25 +142,6 @@
 
     updateButtons();
 
-    // Scroll-to-top button functionality
-    const scrollToTopButton = document.getElementById('scroll-to-top');
-
-    // Show or hide scroll-to-top button based on scroll position
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 300) {
-            scrollToTopButton.classList.add('show');
-        } else {
-            scrollToTopButton.classList.remove('show');
-        }
-    });
-
-    scrollToTopButton.addEventListener('click', function() {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
-
     // Mobile menu functionality
     const mobileMenuIcon = document.getElementById('mobile-menu-icon');
     const mobileMenu = document.getElementById('mobile-menu');
