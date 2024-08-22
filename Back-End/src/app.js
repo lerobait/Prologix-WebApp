@@ -3,10 +3,10 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const { loadOrUpdateProducts } = require('./utils/productLoader');
 const cron = require('node-cron');
-const createError = require('http-errors');
 const path = require('path');
 const swaggerUi = require('swagger-ui-express');
-const swaggerSpec = require('./swagger')
+const swaggerSpec = require('./swagger');
+const AppError = require('./utils/appError');
 
 const viewRouter = require('./routes/viewRoutes');
 const productRouter = require('./routes/productRoutes');
@@ -40,19 +40,17 @@ app.use('/api', productRouter);
 app.use('/api', authRouter);
 app.use('/api', userRouter);
 
-// catch 404 and forward to error handler
-app.use(function (req, res, next) {
-  next(createError(404));
+app.use((req, res, next) => {
+  next(new AppError('Not found', 404));
 });
 
-// error handler
-app.use(function (err, req, res, next) {
-  // set locals, only providing error in development
+app.use((err, req, res, next) => {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
-  res.status(err.status || 500);
+  const statusCode = err.statusCode || 500;
+  res.status(statusCode);
+
   res.render('error');
 });
 
