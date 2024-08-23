@@ -8,7 +8,6 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerSpec = require('./swagger');
 const AppError = require('./utils/appError');
 
-const viewRouter = require('./routes/viewRoutes');
 const productRouter = require('./routes/productRoutes');
 const authRouter = require('./routes/api/authRoutes');
 const userRouter = require('./routes/api/userRoutes');
@@ -34,9 +33,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use('/', viewRouter);
+app.use('/', productRouter);
 app.use('/api/doc', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
-app.use('/api', productRouter);
 app.use('/api', authRouter);
 app.use('/api', userRouter);
 

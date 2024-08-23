@@ -210,45 +210,81 @@ cardLinks.forEach((link) => {
   });
 });
 
-// Add an event listener that waits for the DOM to be fully loaded before executing the code
+function updatePageContent(html) {
+
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(html, 'text/html');
+
+  // Update product cards
+  const productCards = doc.querySelectorAll('.item.card-link');
+  const gridContainer = document.querySelector('.grid-container');
+  if (gridContainer) {
+    gridContainer.innerHTML = '';
+    productCards.forEach(card => {
+      gridContainer.appendChild(card);
+    });
+  } else {
+    console.error('No .grid-container found in the current document');
+  }
+
+  // Update pagination
+  const paginationContainer = doc.querySelector('.pagination-container');
+  const pagination = document.querySelector('.pagination-container');
+  if (paginationContainer) {
+    if (pagination) {
+      pagination.innerHTML = paginationContainer.innerHTML;
+    } else {
+      // If pagination container is not present in the current document, add it
+      const newPagination = document.createElement('div');
+      newPagination.classList.add('pagination-container');
+      newPagination.innerHTML = paginationContainer.innerHTML;
+      const element = document.querySelector('.grid-container');
+      element.appendChild(newPagination); // Append to body or appropriate container
+    }
+  } else {
+    console.error('No .pagination-container found in the response HTML');
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-  // Select all elements with the class 'category-button'
+  // Handle category button clicks
   const categoryButtons = document.querySelectorAll('.category-button');
-
-  // Iterate over each category button
   categoryButtons.forEach((button) => {
-    // Add a click event listener to each button
     button.addEventListener('click', async (event) => {
-      // Prevent the default action of the click event (e.g., navigating to a link)
       event.preventDefault();
-
-      // Get the category ID from the button's data attribute
       const categoryId = event.currentTarget.getAttribute('data-category-id');
-
+      const url = `/?categories=${categoryId}&page=1&limit=15`;
       try {
-        // Make an asynchronous request to the server to fetch products for the selected category
-        const response = await fetch(
-          `/products-by-category?category_id=${categoryId}`
-        );
-
-        // Get the response text, which is expected to be HTML content
+        const response = await fetch(url);
         const html = await response.text();
-
-        // Update the product cards with the new HTML content
-        updateProductCards(html);
+        updatePageContent(html);
+        history.pushState(null, '', url);
       } catch (error) {
-        // Log any errors that occur during the fetch operation
         console.error('Error fetching product data:', error);
       }
     });
   });
+
+  // Handle search button click
+  const searchInput = document.querySelector('#search-container input#search');
+  const searchButton = document.querySelector('#search-container span._icon-search');
+  searchButton.addEventListener('click', async () => {
+    const searchQuery = searchInput.value.trim();
+    const url = `/products/search?search=${encodeURIComponent(searchQuery)}&page=1&limit=15`
+    try {
+      const response = await fetch(url);
+      const html = await response.text();
+      updatePageContent(html);
+      history.pushState(null, '', url);
+    } catch (error) {
+      console.error('Error fetching product data:', error);
+    }
+  });
+
+  // Handle pressing Enter in the search input
+  searchInput.addEventListener('keypress', (event) => {
+    if (event.key === 'Enter') {
+      searchButton.click();
+    }
+  });
 });
-
-// Function to update the product cards on the page
-function updateProductCards(html) {
-  // Select the container where the product cards are displayed
-  const gridContainer = document.querySelector('.grid-container');
-
-  // Set the inner HTML of the container to the new HTML content
-  gridContainer.innerHTML = html;
-}

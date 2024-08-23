@@ -370,6 +370,7 @@ main {
 }
 
 #products {
+    position: relative;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -576,6 +577,7 @@ footer p {
     margin-top: 20px;
     height: 40%;
     padding: 0px 10px;
+    align-items: center;
 }
 
 .grid-container > div {
@@ -583,6 +585,10 @@ footer p {
   display: flex;
   padding: 20px 0;
   font-size: 24px;
+}
+
+.grid-container > div.pagination-container{
+    background-color: transparent;
 }
 
 .item > img {
@@ -768,6 +774,44 @@ footer p {
     justify-content: space-between;
 }
 
+.pagination-container {
+    display: flex;
+    justify-content: center; 
+    width: 100%;
+    grid-column: 1 / -1;
+    margin-top: 20px;
+    min-width: 400px;
+}
+
+.pagination {
+    display: inline-block;
+    padding: 10px;
+    border-radius: 5px;
+}
+  
+  .pagination a {
+    padding: 10px;
+    margin: 0 5px;
+    text-decoration: none;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #333;
+  }
+  
+  .pagination a:hover {
+    background-color: #ddd;
+  }
+  
+  .pagination span {
+    padding: 10px;
+    margin: 0 5px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #333;
+  }
+
 /* Media queries for responsive design */
 @media (max-width: 1600px) {
     .card-text {
@@ -916,7 +960,7 @@ footer p {
     #filters, #categories, #products {
         width: 100%;
         margin-bottom: 20px;
-    }
+    }        
 
     #content {
         flex-direction: column;
