@@ -17,18 +17,21 @@ class ProductController {
    * @throws {AppError} - Throws an AppError if there is an issue with the database query or other processing errors.
    * 
    * @example
-   * Example request: GET /products?categories=2,5,8&page=1&limit=40
+   * Example request: GET /?categories=2,5,8&page=1&limit=15
    * This will fetch products with category_id 2, 5, or 8, with pagination on page 1 and limit 40 products per page.
    */
   async getProducts(req, res) {
-    const { categories, page = 1, limit = 40 } = req.query;
+    const { categories, page = 1, limit = 15 } = req.query;
     const offset = (page - 1) * limit;
+    const params = req.query.categories ? `?categories=${req.query.categories}` : '';
+    let render = 'overview';
 
     let query = 'SELECT * FROM products';
     const queryParams = [];
 
     // Handle category filter
     if (categories) {
+      // render = 'partials/productCards';
       const categoriesArray = categories.split(',');
       query += ' WHERE category_id = ANY($1::int[])';
       queryParams.push(categoriesArray.map(Number));
@@ -54,8 +57,9 @@ class ProductController {
       const totalCountResult = await db.one(totalCountQuery, categories ? [categories.split(',').map(Number)] : []);
       const totalCount = parseInt(totalCountResult.count, 10);
 
-      // Send the products as a JSON response
-      res.json({
+      res.status(200).render(render, {
+        title: render === 'overview' ? 'Prologix - Головна' : '',
+        params,
         products,
         totalCount,
         totalPages: Math.ceil(totalCount / limit),
@@ -85,12 +89,13 @@ class ProductController {
     * @throws {AppError} - Throws an AppError if there is an issue with the database query or other processing errors.
     * 
     * @example
-    * Example request: GET products/search?search=laptop&page=1&limit=40
+    * Example request: GET products/search?search=laptop&page=1&limit=15
     * This will fetch products where the title contains 'laptop', with pagination on page 1 and limit 40 products per page.
     */
   async searchProducts(req, res) {
-    const { search, page = 1, limit = 40 } = req.query;
+    const { search, page = 1, limit = 15 } = req.query;
     const offset = (page - 1) * limit;
+    const params = req.query.search ? `/products/search?search=${req.query.search}` : '';
 
     let query = 'SELECT * FROM products';
     const queryParams = [];
@@ -112,12 +117,12 @@ class ProductController {
       const totalCountResult = await db.one(totalCountQuery, search ? [`%${search}%`] : []);
       const totalCount = parseInt(totalCountResult.count, 10);
 
-      // Send the products as a JSON response
-      res.json({
+      res.status(200).render('overview', {
+        params,
         products,
         totalCount,
         totalPages: Math.ceil(totalCount / limit),
-        currentPage: parseInt(page, 10),
+        currentPage: parseInt(page, 10)
       });
     } catch (error) {
       // Handle errors that occur during the database query
