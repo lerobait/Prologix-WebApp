@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
     scroll: document.querySelector('#scroll-to-top'),
     mobileMenu: document.querySelector('.mobile-menu'),
     textForMobile: document.querySelectorAll('.mobile-menu a'),
+    li: document.querySelectorAll('li'),
   };
 
   // Check if the user changed the theme preference
@@ -30,8 +31,8 @@ document.addEventListener('DOMContentLoaded', function () {
     elementsToToggle.header.classList.toggle('light', isLightMode);
     elementsToToggle.footer.classList.toggle('light', isLightMode);
     elementsToToggle.logo.src = isLightMode
-      ? '../img/logo-black.png'
-      : '../img/logo.png';
+      ? '/img/logo-black.png'
+      : '/img/logo.png';
     elementsToToggle.links.forEach((link) =>
       link.classList.toggle('light', isLightMode)
     );
@@ -52,6 +53,9 @@ document.addEventListener('DOMContentLoaded', function () {
     elementsToToggle.textForMobile.forEach((text) =>
       text.classList.toggle('light', isLightMode)
     );
+    elementsToToggle.li.forEach((li) =>
+      li.classList.toggle('light', isLightMode)
+    );
 
     //Checking whether the user is on the home page
     const url = window.location.href;
@@ -61,5 +65,24 @@ document.addEventListener('DOMContentLoaded', function () {
       elementsToToggle.categories.classList.toggle('light', isLightMode);
       elementsToToggle.listImg.classList.toggle('light', isLightMode);
     }
+  });
+});
+
+// Scroll-to-top button functionality
+const scrollToTopButton = document.getElementById('scroll-to-top');
+
+// Show or hide scroll-to-top button based on scroll position
+window.addEventListener('scroll', function () {
+  if (window.scrollY > 300) {
+    scrollToTopButton.classList.add('show');
+  } else {
+    scrollToTopButton.classList.remove('show');
+  }
+});
+
+scrollToTopButton.addEventListener('click', function () {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
   });
 });

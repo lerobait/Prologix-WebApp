@@ -178,6 +178,10 @@ footer.light {
     border-bottom: black solid 2px;
 }
 
+#top-text li.light {
+    color: black;
+}
+
 /* Icons in the header */
 .icons {
     display: flex;
@@ -783,6 +787,212 @@ footer p {
     justify-content: space-between;
 }
 
+/* Styling for info.html */
+
+/* Setting the font size and color for the text */
+
+.about-brand {
+    font-size: 20px;
+    color: white;
+    padding-bottom: 0px;
+}
+  
+/* Styling for brand slogan */
+  
+#brand-slogan {
+    background-color: #b1b8d3;
+}
+  
+#brand-slogan p {
+    color: black;
+    font-size: 28px;
+    text-align: right;
+    margin-right: 2%;
+    margin-bottom: 45%;
+}
+  
+#slogan-images {
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    align-items: flex-end;
+}
+  
+.column-img {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+  
+#top-img {
+    width: 59%;
+}
+  
+#bottom-img {
+    margin-top: 51px;
+    width: 71%;
+}
+  
+#center-img {
+    width: 19%;
+    height: 10%;
+    margin-left: 0.1%;
+}
+  
+#info-logo {
+    width: 60%;
+    margin-left: 49%;
+    margin-top: 0; 
+    margin-bottom: auto;
+}
+  
+#right-img {
+    width: 73.5%;
+    height: 1%;
+    margin-left: 26.5%;
+    align-self: flex-end;
+}
+  
+/* Styling for basic info */
+  
+#basic-info {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: row;
+}
+  
+#basic-info img {
+    height: auto;
+}
+  
+#top-text {
+    margin: 60px 0px 0px 30px;
+}
+  
+#top-images {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+  
+#tv1 {
+    width: 50%;
+    margin-top: 60px;
+    margin-bottom: 20px;
+}
+  
+#tv2 {
+    width: 35%;
+    margin-right: 67.5%;
+    margin-bottom: 60px;
+}
+  
+#basic-info p, #basic-info ul {
+    flex: 1;
+}
+  
+/* Styling for range info */
+
+#range-info {
+    border-top: 1px solid #191f28;
+    border-bottom: 1px solid #191f28;
+}
+  
+#range-info img {
+    width: 40%;
+    margin-left: 33.7%;
+    margin-top: 60px;
+}
+  
+#range-info p {
+    margin-left: 59.5%;
+    padding-bottom: 60px;
+}
+  
+/* Styling for aim info */
+  
+#aim-info p {
+    margin: 60px 0px;
+    text-align: center;
+}
+  
+#left-blocks, #right-blocks {
+    width: 30%;
+    margin-top: 60px;
+}
+  
+#left-blocks {
+    margin-left: 6.2%;
+}
+  
+#right-blocks {
+    margin-left: 27.9%;
+}
+  
+#computers {
+    width: 45%;
+    height:auto;
+    margin-top: 90px;
+    margin-left: 28.3%; 
+}
+  
+/* Animations for info page */
+  
+/* Animation for li symbols */
+
+.rotate {
+    animation: 1s linear 0s normal none infinite running rotating;
+    width: 10px;
+    display: inline-block;
+}
+  
+@keyframes rotating {
+
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+}
+  
+/* Animation for top images */
+
+.animate-up {
+    animation: img-slide-up 2s ease-in-out;
+}
+  
+@keyframes img-slide-up {
+    0% {
+      transform: translateY(200%);
+    }
+
+    100% {
+      transform: translateY(0%);
+    }
+}
+  
+/* Animation for laptop */
+  
+.zoom-image {
+    animation: zoom-in-out ease-in-out 3s infinite;
+}
+  
+@keyframes zoom-in-out {
+    0% {
+      transform: scale(0.3);
+    }
+
+    50% {
+      transform: scale(1);
+    }
+
+    100% {
+      transform: scale(0.3);
+    }
+}
 .pagination-container {
     display: flex;
     justify-content: center; 
@@ -822,6 +1032,7 @@ footer p {
   }
 
 /* Media queries for responsive design */
+
 @media (max-width: 1600px) {
     .card-text {
         margin-bottom: 5%;
@@ -836,6 +1047,22 @@ footer p {
         margin-left: 77%;
     }
 
+    #brand-slogan p {
+        font-size: 26px;
+    }
+
+    #brand-slogan {
+        margin-top: 1%;
+    }
+
+    #bottom-img {
+        margin-top: 8.2%;
+    }
+
+    #computers {
+        margin-left: 30%;
+    }
+    
     .card-img img {
         width: 190px;
         height: 190px;
@@ -863,6 +1090,10 @@ footer p {
 
     .item {
         height: 230px;
+    }
+
+    #brand-slogan {
+        margin-top: 3%;
     }
 }
 
@@ -907,6 +1138,22 @@ footer p {
         margin-left: 72%;
     }
 
+    #brand-slogan {
+        margin-top: 4.8%;
+    }
+
+    #basic-info, #range-info, #aim-info {
+        font-size: 18px;
+    }
+
+    #info-logo {
+        margin-top: 2%;
+    }
+
+    #brand-slogan p {
+        margin-bottom: 33%;
+    }
+    
     .card-img img {
         width: 170px;
         height: 170px;
@@ -1088,8 +1335,53 @@ footer p {
         font-size: 20px;
     }
 
+    #brand-slogan p {
+        font-size: 19px;
+        margin-bottom: 65%;
+    }
+
+    #brand-slogan {
+        margin-top: 7.7%;
+    }
+
+    #basic-info, #range-info, #aim-info {
+        font-size: 16px;
+    }
+
+    #tv2 {
+        margin-top: 6%;
+        margin-right: 47.5%;
+    }
+
+    #top-img {
+       margin-top: 4%;
+    }
+
+    #bottom-img {
+        margin-top: 45%;
+    }
+
+    #info-logo {
+        margin-top: 3%;
+    }
+    
     .card-img img {
         width: 140px;
         height: 140px;
     }
+}
+
+@media (max-width: 608px) {
+    #brand-slogan p {
+        margin-bottom: 40%;
+        font-size: 15px;
+    }
+
+    #info-logo {
+        margin-top: 10%;
+    }
+
+    #top-img {
+        margin-top: 35%;
+     }
 }

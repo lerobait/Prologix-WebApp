@@ -139,28 +139,6 @@ prevButton.addEventListener('click', function () {
   }
 });
 
-nextButton.addEventListener('click', function () {
-  if (currentIndex < images.length - imagesPerPage) {
-    currentIndex++;
-    scrollImages();
-    updateButtons();
-  }
-});
-
-updateButtons();
-
-// Scroll-to-top button functionality
-const scrollToTopButton = document.getElementById('scroll-to-top');
-
-// Show or hide scroll-to-top button based on scroll position
-window.addEventListener('scroll', function () {
-  if (window.scrollY > 300) {
-    scrollToTopButton.classList.add('show');
-  } else {
-    scrollToTopButton.classList.remove('show');
-  }
-});
-
 scrollToTopButton.addEventListener('click', function () {
   window.scrollTo({
     top: 0,
