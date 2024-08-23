@@ -13,57 +13,57 @@ block content
                         button.sub-filter-button Комп'ютери та комплектуючі
                             span._icon-chevron-right
                         ul.sub-filter-list
-                            li
+                            li(class="category-button" data-category-id="27")
                                 a(href="#") SSD-накопичувачі
-                            li
+                            li(class="category-button" data-category-id="26")
                                 a(href="#") Комп'ютери
-                            li
+                            li(class="category-button" data-category-id="8")
                                 a(href="#") Корпуси для ПК
-                            li
+                            li(class="category-button" data-category-id="5")
                                 a(href="#") Монітори
-                            li
+                            li(class="category-button" data-category-id="582")
                                 a(href="#") Моноблоки
-                            li
+                            li(class="category-button" data-category-id="31")
                                 a(href="#") Ноутбуки
-                            li
+                            li(class="category-button" data-category-id="2")
                                 a(href="#") Оперативна пам'ять для ПК і ноутбуків
-                            li
+                            li(class="category-button" data-category-id="624")
                                 a(href="#") Сервери
                     li
                         button.sub-filter-button Аксесуари та периферія
                             span._icon-chevron-right
                         ul.sub-filter-list
-                            li
+                            li(class="category-button" data-category-id="554")
                                 a(href="#") Акумуляторні батареї
-                            li
+                            li(class="category-button" data-category-id="1277")
                                 a(href="#") Аксесуари для торгового обладнання
-                            li
+                            li(class="category-button" data-category-id="174")
                                 a(href="#") Аксесуари до електротранспорту
-                            li
+                            li(class="category-button" data-category-id="770")
                                 a(href="#") Геймпади, джойстики, керма
-                            li
+                            li(class="category-button" data-category-id="1430")
                                 a(href="#") Грошові скрині
-                            li
+                            li(class="category-button" data-category-id="980")
                                 a(href="#") Док-станції для ноутбуків
-                            li
+                            li(class="category-button" data-category-id="176")
                                 a(href="#") Запчастини до електротранспорту
-                            li
+                            li(class="category-button" data-category-id="1372")
                                 a(href="#") Захисні плівки та скло до телефонів
-                            li
+                            li(class="category-button" data-category-id="648")
                                 a(href="#") Кабелі мультимедійні та перехідники (адаптери)
-                            li
+                            li(class="category-button" data-category-id="58")
                                 a(href="#") Кабелі синхронізації та перехідники (адаптери)
-                            li
+                            li(class="category-button" data-category-id="86")
                                 a(href="#") Підставки та кріплення для мобільних пристроїв
-                            li
+                            li(class="category-button" data-category-id="45")
                                 a(href="#") Мережеві фільтри, подовжувачі та адаптери
                     li
                         button.sub-filter-button Електроніка та пристрої
                             span._icon-chevron-right
                         ul.sub-filter-list
-                            li
+                            li(class="category-button" data-category-id="22")
                                 a(href="#") Джерела безперебійного живлення (ДБЖ)
-                            li
+                            li(class="category-button" data-category-id="780")
                                 a(href="#") Сканери штрих-кодів
 
             section#products
@@ -72,31 +72,31 @@ block content
                     #list-images
                         .image-container
                             p.image-title Комп'ютери
-                            a(href="#")
+                            a(href="#" class="category-button" data-category-id="26")
                                 img(src="/img/rounded-in-photoretrica.png" alt="PC picture")
                         .image-container
                             p.image-title Ноутбуки
-                            a(href="#")
+                            a(href="#" class="category-button" data-category-id="31")
                                 img(src="/img/laptop.png" alt="Laptop picture")
                         .image-container
                             p.image-title Монітори
-                            a(href="#")
+                            a(href="#" class="category-button" data-category-id="5")
                                 img(src="/img/monitors.png" alt="Monitor picture")
                         .image-container
                             p.image-title Моноблоки
-                            a(href="#")
+                            a(href="#" class="category-button" data-category-id="582")
                                 img(src="/img/monoblocks.png" alt="Monoblocks picture")
                         .image-container
                             p.image-title Корпуси
-                            a(href="#")
+                            a(href="#" class="category-button" data-category-id="8")
                                 img(src="/img/cases.png" alt="Cases picture")
                         .image-container
                             p.image-title SSD
-                            a(href="#")
+                            a(href="#" class="category-button" data-category-id="27")
                                 img(src="/img/ssd.png" alt="SSD picture")
                         .image-container
                             p.image-title Оперативна пам'ять
-                            a(href="#")
+                            a(href="#" class="category-button" data-category-id="2")
                                 img(src="/img/ram.png" alt="RAM picture")
                     button#next-button._icon-chevron-right
 
@@ -104,21 +104,9 @@ block content
                     input#search(type="text" placeholder="Пошук...")
                     span._icon-search
 
-                //- .grid-container
-                //-     each product in products
-                //-         .item.card-link
-                //-             .card-img
-                //-                 img(src=product.image_link[0] alt=product.title)
-                //-             #main-info
-                //-                 p.card-text
-                //-                     span #{product.title}
-                //-                     br
-                //-                     br
-                //-                     | #{product.description}
-                //-                 #icons
-                //-                     a.card-icon._icon-heart(href='#')
-                //-                     a.card-icon._icon-balance-scale(href='#')
-
+                .grid-container
+                    include partials/productCards
+                    
             button#scroll-to-top._icon-arrow-circle-up
         script(src="./js/switch.js")
         
