@@ -1,0 +1,7 @@
+.pagination-container
+  .pagination
+    if currentPage > 1
+      a(href=`${params ? params + '&' : '?'}page=${currentPage - 1}&limit=15`) Previous
+    span Page #{currentPage} of #{totalPages}
+    if currentPage < totalPages
+      a(href=`${params ? params + '&' : '?'}page=${currentPage + 1}&limit=15`) Next
