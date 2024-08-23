@@ -10,4 +10,7 @@ router.get('/', productController.getProducts);
 // Route for searching products
 router.get('/products/search', productController.searchProducts);
 
+// Route for product page
+router.get('/products/:code', productController.getProductByCode);
+
 module.exports = router;

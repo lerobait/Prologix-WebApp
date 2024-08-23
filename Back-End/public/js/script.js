@@ -205,10 +205,32 @@ mobileMenu.addEventListener('animationend', function (event) {
 const cardLinks = document.querySelectorAll('.card-link');
 
 cardLinks.forEach((link) => {
-  link.addEventListener('click', () => {
-    window.location.href = 'card.html';
+  link.addEventListener('click', (event) => {
+    event.preventDefault();
+    const code = link.getAttribute('data-product-code');
+    window.location.href = `/products/${code}`;
   });
 });
+
+function addProductCardEventListeners() {
+  // Select all elements with the class 'card-link'
+  const cardLinks = document.querySelectorAll('.card-link');
+
+  // Loop through each selected element
+  cardLinks.forEach((link) => {
+    // Add a click event listener to each link
+    link.addEventListener('click', (event) => {
+      // Prevent the default action of the click event (e.g., navigating to a link)
+      event.preventDefault();
+
+      // Get the product code from the 'data-product-code' attribute of the clicked link
+      const code = link.getAttribute('data-product-code');
+
+      // Redirect the user to the product details page using the extracted product code
+      window.location.href = `/products/${code}`;
+    });
+  });
+}
 
 function updatePageContent(html) {
   // Parse the provided HTML string into a DOM document
@@ -222,9 +244,10 @@ function updatePageContent(html) {
     // Clear existing product cards
     gridContainer.innerHTML = '';
     // Append new product cards from the fetched HTML
-    productCards.forEach(card => {
+    productCards.forEach((card) => {
       gridContainer.appendChild(card);
     });
+    addProductCardEventListeners();
   } else {
     // Log an error if the grid container is not found in the current document
     console.error('No .grid-container found in the current document');
@@ -255,7 +278,7 @@ function updatePageContent(html) {
 document.addEventListener('DOMContentLoaded', () => {
   // Handle category button clicks
   const categoryButtons = document.querySelectorAll('.category-button');
-   // Iterate over each category button
+  // Iterate over each category button
   categoryButtons.forEach((button) => {
     // Add a click event listener to each button
     button.addEventListener('click', async (event) => {
@@ -282,13 +305,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Handle search button click
   const searchInput = document.querySelector('#search-container input#search');
-  const searchButton = document.querySelector('#search-container span._icon-search');
+  const searchButton = document.querySelector(
+    '#search-container span._icon-search'
+  );
 
   // Add an event listener to the search button to handle click events
   searchButton.addEventListener('click', async () => {
     const searchQuery = searchInput.value.trim();
     // Construct the URL for the search request, including query parameters for the search term and pagination
-    const url = `/products/search?search=${encodeURIComponent(searchQuery)}&page=1&limit=15`
+    const url = `/products/search?search=${encodeURIComponent(
+      searchQuery
+    )}&page=1&limit=15`;
     try {
       // Fetch the search results from the server
       const response = await fetch(url);
@@ -310,4 +337,6 @@ document.addEventListener('DOMContentLoaded', () => {
       searchButton.click();
     }
   });
+
+  addProductCardEventListeners();
 });

@@ -1,5 +1,5 @@
 each product in products
-  .item.card-link
+  .item.card-link(data-product-code=product.code)
       img(src=product.image_link[0] alt=product.title)
       #main-info
           p.card-text
