@@ -211,7 +211,7 @@ cardLinks.forEach((link) => {
 });
 
 function updatePageContent(html) {
-
+  // Parse the provided HTML string into a DOM document
   const parser = new DOMParser();
   const doc = parser.parseFromString(html, 'text/html');
 
@@ -219,11 +219,14 @@ function updatePageContent(html) {
   const productCards = doc.querySelectorAll('.item.card-link');
   const gridContainer = document.querySelector('.grid-container');
   if (gridContainer) {
+    // Clear existing product cards
     gridContainer.innerHTML = '';
+    // Append new product cards from the fetched HTML
     productCards.forEach(card => {
       gridContainer.appendChild(card);
     });
   } else {
+    // Log an error if the grid container is not found in the current document
     console.error('No .grid-container found in the current document');
   }
 
@@ -232,16 +235,19 @@ function updatePageContent(html) {
   const pagination = document.querySelector('.pagination-container');
   if (paginationContainer) {
     if (pagination) {
+      // Update the existing pagination with new content
       pagination.innerHTML = paginationContainer.innerHTML;
     } else {
       // If pagination container is not present in the current document, add it
       const newPagination = document.createElement('div');
       newPagination.classList.add('pagination-container');
       newPagination.innerHTML = paginationContainer.innerHTML;
+      // Append the new pagination container to the grid container or another appropriate element
       const element = document.querySelector('.grid-container');
-      element.appendChild(newPagination); // Append to body or appropriate container
+      element.appendChild(newPagination);
     }
   } else {
+    // Log an error if the pagination container is not found in the response HTML
     console.error('No .pagination-container found in the response HTML');
   }
 }
@@ -249,17 +255,26 @@ function updatePageContent(html) {
 document.addEventListener('DOMContentLoaded', () => {
   // Handle category button clicks
   const categoryButtons = document.querySelectorAll('.category-button');
+   // Iterate over each category button
   categoryButtons.forEach((button) => {
+    // Add a click event listener to each button
     button.addEventListener('click', async (event) => {
+      // Prevent the default action of the click event (e.g., navigating to a link)
       event.preventDefault();
+      // Get the category ID from the button's data attribute
       const categoryId = event.currentTarget.getAttribute('data-category-id');
       const url = `/?categories=${categoryId}&page=1&limit=15`;
       try {
+        // Make an asynchronous request to the server to fetch products for the selected category
         const response = await fetch(url);
+        // Get the response text, which is expected to be HTML content
         const html = await response.text();
+        // Update the product cards with the new HTML content
         updatePageContent(html);
+        // Update the browser's history to reflect the new URL
         history.pushState(null, '', url);
       } catch (error) {
+        // Log any errors that occur during the fetch operation
         console.error('Error fetching product data:', error);
       }
     });
@@ -268,15 +283,23 @@ document.addEventListener('DOMContentLoaded', () => {
   // Handle search button click
   const searchInput = document.querySelector('#search-container input#search');
   const searchButton = document.querySelector('#search-container span._icon-search');
+
+  // Add an event listener to the search button to handle click events
   searchButton.addEventListener('click', async () => {
     const searchQuery = searchInput.value.trim();
+    // Construct the URL for the search request, including query parameters for the search term and pagination
     const url = `/products/search?search=${encodeURIComponent(searchQuery)}&page=1&limit=15`
     try {
+      // Fetch the search results from the server
       const response = await fetch(url);
+      // Convert the response to text (HTML) format
       const html = await response.text();
+      // Update the page content with the new HTML data
       updatePageContent(html);
+      // Update the browser's history to reflect the new URL
       history.pushState(null, '', url);
     } catch (error) {
+      // Log any errors that occur during the fetch operation
       console.error('Error fetching product data:', error);
     }
   });
