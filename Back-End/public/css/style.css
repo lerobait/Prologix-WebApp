@@ -609,17 +609,19 @@ footer p {
 }
 
 .card-img {
+    width: 230px;
+    height: 100%;
     background-color: white;
     margin-left: 20px;
+    border-radius: 10%;
 }
 
 .card-img img {
-    margin-left: 20px;
-    margin-bottom: 20px;
-    object-fit: contain;
+    border-radius: 10%;
+    margin: 0px;
+    object-fit: scale-down;
     width: 230px;
     height: 230px;
-    clip-path: inset(0 0 0 0);
 }
 
 .name {
