@@ -6,9 +6,10 @@ const cron = require('node-cron');
 const path = require('path');
 const swaggerUi = require('swagger-ui-express');
 const swaggerSpec = require('./swagger');
-const AppError = require('./utils/appError');
+const { handleNotFound, handleErrors } = require('./utils/errorHandler');
 
-const productRouter = require('./routes/productRoutes');
+const viewRouter = require('./routes/viewRoutes');
+const productRouter = require('./routes/api/productRoutes');
 const authRouter = require('./routes/api/authRoutes');
 const userRouter = require('./routes/api/userRoutes');
 
@@ -33,23 +34,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use('/', productRouter);
-app.use('/api/doc', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use('/', viewRouter);
+app.use('/api', productRouter);
 app.use('/api', authRouter);
 app.use('/api', userRouter);
+app.use('/api/doc', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
-app.use((req, res, next) => {
-  next(new AppError('Not found', 404));
-});
-
-app.use((err, req, res, next) => {
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  const statusCode = err.statusCode || 500;
-  res.status(statusCode);
-
-  res.render('error');
-});
+app.use(handleNotFound);
+app.use(handleErrors);
 
 module.exports = app;
