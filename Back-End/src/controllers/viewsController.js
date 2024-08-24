@@ -56,6 +56,13 @@ class ViewsController {
       product, // Pass the product object to the template for rendering
     });
   });
+
+  // Method to render the info page with no additional parameters
+  renderInfo = catchAsync(async (req, res) => {
+    res.status(200).render('info', {
+      title: 'Prologix - Информация', // Optional title for the page
+    });
+  });
 }
 
 module.exports = new ViewsController();

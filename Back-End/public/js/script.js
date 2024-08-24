@@ -110,33 +110,44 @@ document.querySelectorAll('.sub-filter-list').forEach((subFilterList) => {
 });
 
 // Image navigation functionality
-const prevButton = document.getElementById('prev-button');
-const nextButton = document.getElementById('next-button');
-const listImages = document.getElementById('list-images');
-const images = listImages.querySelectorAll('a');
-const imagesPerPage = 4;
-let currentIndex = 0;
+document.addEventListener('DOMContentLoaded', () => {
+  const prevButton = document.getElementById('prev-button');
+  const nextButton = document.getElementById('next-button');
+  const listImages = document.getElementById('list-images');
+  const images = listImages.querySelectorAll('a');
+  const imagesPerPage = 4;
+  let currentIndex = 0;
 
-function updateButtons() {
-  prevButton.disabled = currentIndex === 0;
-  nextButton.disabled = currentIndex >= images.length - imagesPerPage;
-}
-
-// Scroll images to the current index
-function scrollImages() {
-  const imgWidth = images[0].offsetWidth;
-  listImages.scrollTo({
-    left: currentIndex * imgWidth,
-    behavior: 'smooth',
-  });
-}
-
-prevButton.addEventListener('click', function () {
-  if (currentIndex > 0) {
-    currentIndex--;
-    scrollImages();
-    updateButtons();
+  function updateButtons() {
+    prevButton.disabled = currentIndex === 0;
+    nextButton.disabled = currentIndex >= images.length - imagesPerPage;
   }
+
+  // Scroll images to the current index
+  function scrollImages() {
+    const imgWidth = images[0].offsetWidth;
+    listImages.scrollTo({
+      left: currentIndex * imgWidth,
+      behavior: 'smooth',
+    });
+  }
+
+  prevButton.addEventListener('click', function () {
+    if (currentIndex > 0) {
+      currentIndex--;
+      scrollImages();
+      updateButtons();
+    }
+  });
+
+  nextButton.addEventListener('click', function () {
+    if (currentIndex < images.length - imagesPerPage) {
+      currentIndex++;
+      scrollImages();
+      updateButtons();
+    }
+  });
+  updateButtons();
 });
 
 scrollToTopButton.addEventListener('click', function () {

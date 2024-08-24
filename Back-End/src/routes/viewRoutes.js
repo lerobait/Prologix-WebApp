@@ -13,4 +13,6 @@ router.get('/products/search', viewsController.renderSearchResults);
 // Route for product page
 router.get('/products/:code', viewsController.renderProductByCode);
 
+router.get('/info', viewsController.renderInfo);
+
 module.exports = router;
