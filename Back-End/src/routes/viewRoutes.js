@@ -15,4 +15,6 @@ router.get('/products/:code', viewsController.renderProductByCode);
 
 router.get('/info', viewsController.renderInfo);
 
+router.get('/about', viewsController.renderAbout);
+
 module.exports = router;

@@ -63,6 +63,13 @@ class ViewsController {
       title: 'Prologix - Информация', // Optional title for the page
     });
   });
+
+  // Method to render the info page with no additional parameters
+  renderAbout = catchAsync(async (req, res) => {
+    res.status(200).render('about', {
+      title: 'Prologix - Про нас', // Optional title for the page
+    });
+  });
 }
 
 module.exports = new ViewsController();

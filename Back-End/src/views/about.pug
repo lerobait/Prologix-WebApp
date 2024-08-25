@@ -1,91 +1,89 @@
 extends base
 
 block content
-    main
-        .container-about
-            h1#name Наша команда
-            #background
-                .tab-buttons
-                    button.tab-button Ніконов Кирило
-                    button.tab-button Болтенков Олександр
-                    button.tab-button Нікулін Артем
-                    button.tab-button Гєєнко Анна
-                    button.tab-button Волков Дмитро
-                    button.tab-button Левченко Яна
-                .section-container
-                    p#select-develop Оберіть розробника...
-                    section.about-us
-                        img(src="img/img-ava-Kirill.jpg" alt="Kirill Nikonov")
-                        h1 Ніконов Кирило
-                        .info-block
-                            .role
-                                p Back-End Developer
-                            p
-                                span.bold Обов'язки:
-                                |  Cтворення та підтримка каталогу
-                                |  продуктів на сайті, включаючи вивантаження даних з бази даних та їх рендеринг на
-                                |  вебсторінці. Забезпечено функціонал фільтрації за категоріями, пошуку по назві та
-                                |  реалізовано пагінацію для зручної навігації між сторінками.
-                    section.about-us
-                        img(src="img/img-ava-Anna.jpg" alt="Alexander Boltenkov")
-                        h1 Болтенков Олександр
-                        .info-block
-                            .role
-                                p Back-End Developer
-                            p
-                                span.bold Обов'язки:
-                                |  Налаштування конфігурації та підняття проекту на
-                                |  Docker, написання API роутів для JWT авторизації (реєстрація, логін, оновлення токена,
-                                |  логаут), написання API роуту для отримання даних про поточного користувача,
-                                |  додавання Swagger документації до проекту.
-                    section.about-us
-                        img(src="img/img-ava-Anna.jpg" alt="Artem Nikulin")
-                        h1 Нікулін Артем
-                        .info-block
-                            .role
-                                p Back-End Developer
-                                p Team Lead
-                            p
-                                span.bold Обов'язки:
-                                |  Розробка вивантаження даних до локальної бази
-                                |  даних з вказаного джерела API, реалізування рендерингу сторінок на серверній частині,
-                                |  API маршрути для роботи з продуктами із доданою до них документацією Swagger,
-                                |  брав участь у розробці каталогу та запровадив чітку структуру проекту.
-                    section.about-us
-                        img(src="img/img-ava-Anna.jpg" alt="Anna Geenko")
-                        h1 Гєєнко Анна
-                        .info-block
-                            .role
-                                p Front-End Developer
-                                p UI/UX Designer
-                            p
-                                span.bold Обов'язки:
-                                |  Дизайн і макет сторінок, розробка головної сторінки
-                                |  і сторінки "Про нас", розробка шаблонів Pug, реалізація мобільної версії для головної
-                                |  сторінки та сторінки "Про нас" і функціоналу через JavaScript.
-                    section.about-us
-                        img(src="img/img-ava-Dmytro.jpg" alt="Dmytro Volkov")
-                        h1 Волков Дмитро
-                        .info-block
-                            .role
-                                p Front-End Developer
-                            p
-                                span.bold Обов'язки:
-                                |  Розробка сторінки реєстрації,
-                                |  сторінки авторизації, особистого кабінету і сторінки "Компоненти",
-                                |  реалізація функціоналу через JavaScript.
-                    section.about-us
-                        img(src="img/img-ava-Yana.jpg" alt="Yana Levchenko")
-                        h1 Левченко Яна
-                        .info-block
-                            .role
-                                p Front-End Developer
-                                p UI/UX Designer
-                            p
-                                span.bold Обов'язки:
-                                |  Дизайн і макет сторінок, реалізація карток
-                                |  на головній сторінці, розробка сторінки "Картка товару"
-                                |  і сторінки "Інформація", розробка шаблонів Pug, реалізація функціоналу через JavaScript.
-            button#scroll-to-top._icon-arrow-circle-up
-        script(src="/js/switch_and_button.js")
-        script(src="/js/aboutList.js")
+  main
+    .container-about
+      h1#name Наша команда
+      #background
+        .tab-buttons
+          button.tab-button Ніконов Кирило
+          button.tab-button Болтенков Олександр
+          button.tab-button Нікулін Артем
+          button.tab-button Гєєнко Анна
+          button.tab-button Волков Дмитро
+          button.tab-button Левченко Яна
+        .section-container
+          p#select-develop Оберіть розробника...
+          
+          // Section for Кирило
+          section.about-us
+            img(src="img/img-ava-Kirill.jpg" alt="Kirill Nikonov")
+            h1 Ніконов Кирило
+            .info-block
+              .role
+                p Back-End Developer
+              p 
+                span.bold Обов'язки: 
+                | Cтворення та підтримка каталогу продуктів на сайті, включаючи вивантаження даних з бази даних та їх рендеринг на вебсторінці. Забезпечено функціонал фільтрації за категоріями, пошуку по назві та реалізовано пагінацію для зручної навігації між сторінками.
+
+          // Section for Олександр
+          section.about-us
+            img(src="img/img-ava-Alex.png" alt="Alexander Boltenkov")
+            h1 Болтенков Олександр
+            .info-block
+              .role
+                p Back-End Developer
+              p 
+                span.bold Обов'язки: 
+                | Налаштування конфігурації та підняття проекту на Docker, написання API роутів для JWT авторизації (реєстрація, логін, оновлення токена, логаут), написання API роуту для отримання даних про поточного користувача, додавання Swagger документації до проекту.
+
+          // Section for Артем
+          section.about-us
+            img(src="img/img-ava-Artem.jpg" alt="Artem Nikulin")
+            h1 Нікулін Артем
+            .info-block
+              .role
+                p Back-End Developer
+                p Team Lead
+              p 
+                span.bold Обов'язки: 
+                | Розробка вивантаження даних до локальної бази даних з вказаного джерела API, реалізування рендерингу сторінок на серверній частині, API маршрути для роботи з продуктами із доданою до них документацією Swagger, брав участь у розробці каталогу та запровадив чітку структуру проекту.
+
+          // Section for Анна
+          section.about-us
+            img(src="img/img-ava-Anna.jpg" alt="Anna Geenko")
+            h1 Гєєнко Анна
+            .info-block
+              .role
+                p Front-End Developer
+                p UI/UX Designer
+              p 
+                span.bold Обов'язки: 
+                | Дизайн і макет сторінок, розробка головної сторінки і сторінки "Про нас", розробка шаблонів Pug, реалізація мобільної версії для головної сторінки та сторінки "Про нас" і функціоналу через JavaScript.
+
+          // Section for Дмитро
+          section.about-us
+            img(src="img/img-ava-Dmytro.jpg" alt="Dmytro Volkov")
+            h1 Волков Дмитро
+            .info-block
+              .role
+                p Front-End Developer
+              p 
+                span.bold Обов'язки: 
+                | Розробка сторінки реєстрації, сторінки авторизації, особистого кабінету і сторінки "Компоненти", реалізація функціоналу через JavaScript.
+
+          // Section for Яна
+          section.about-us
+            img(src="/img/img-ava-Yana.jpg" alt="Yana Levchenko")
+            h1 Левченко Яна
+            .info-block
+              .role
+                p Front-End Developer
+                p UI/UX Designer
+              p 
+                span.bold Обов'язки: 
+                | Дизайн і макет сторінок, реалізація карток на головній сторінці, розробка сторінки "Картка товару" і сторінки "Інформація", розробка шаблонів Pug, реалізація функціоналу через JavaScript.
+
+    button#scroll-to-top._icon-arrow-circle-up
+  script(src="/js/switch_and_button.js")
+  script(src="/js/aboutList.js")
