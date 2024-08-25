@@ -199,3 +199,16 @@ cardLinks.forEach((link) => {
     window.location.href = 'card.html';
   });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuIcon = document.getElementById('mobile-menu-icon');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    mobileMenuIcon.addEventListener('click', function() {
+        if (mobileMenu.style.display === 'block') {
+            mobileMenu.style.display = 'none';
+        } else {
+            mobileMenu.style.display = 'block';
+        }
+    });
+});
