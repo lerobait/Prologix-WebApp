@@ -707,6 +707,8 @@ footer p {
 #info {
     margin-top: 40px;
     margin-right: 20vh;
+    width: 20%;
+    word-wrap: break-word;
 }
 
 #product-name {
@@ -723,6 +725,9 @@ footer p {
 
 #slideshow img {
     vertical-align: middle;
+    width: 600px;
+    height: 600px;
+    object-fit: fill;
 }
   
 .container {
@@ -734,6 +739,7 @@ footer p {
   
 .slide {
     display: none;
+    margin-top: 18%;
 }
   
 .prev, .next {
@@ -748,36 +754,17 @@ footer p {
     top: 40%;
     width: auto;
     padding: 16px;
-    margin-top: -50px;
+    margin-top: 0.1%;
 }
   
 .next {
     border-radius: 3px 0 0 3px;
-    right: 0;
-}
-  
-.column {
-    width: 16.66%;
-    float: left;
-}
-  
-.thumbnail {
-    cursor: pointer;
-    opacity: 0.6;
-}
-  
-.row:after {
-    display: table;
-    content: "";
-    clear: both;
+    right: 2.6%;
+    left: 90.4%;
 }
   
 .prev:hover, .next:hover {
     background-color: rgba(0, 0, 0, 0.8);
-}
-  
-.active, .thumbnail:hover {
-    opacity: 1;
 }
 
 .main-container {
@@ -1067,6 +1054,22 @@ footer p {
         width: 190px;
         height: 190px;
     }
+
+    .next {
+        right: -2%;
+    }
+
+    #slideshow img {
+        width: 550px;
+        height: 550px;
+    }
+}
+
+@media (max-width: 1400px) {
+    #slideshow img {
+        width: 470px;
+        height: 470px;
+    }
 }
 
 @media (max-width: 1200px) {
@@ -1095,6 +1098,20 @@ footer p {
     #brand-slogan {
         margin-top: 3%;
     }
+
+    #info {
+        margin-left: 20%;
+    }
+
+    #slideshow img {
+        margin-top: 18%;
+        width: 370px;
+        height: 370px;
+    }
+
+    .next {
+        left: 115.4%;
+    }
 }
 
 @media (max-width: 992px) {
@@ -1106,6 +1123,7 @@ footer p {
     #info {
         margin-left: 9.5vw;
         margin-right: 10%;
+        margin-top: 7%;
     }
 
     .container {
@@ -1123,6 +1141,10 @@ footer p {
         padding: 10px;
         top: 35%;
         margin-top: 0;
+    }
+
+    .next {
+        left: 65.2%;
     }
 
     .item {
@@ -1157,6 +1179,10 @@ footer p {
     .card-img img {
         width: 170px;
         height: 170px;
+    }
+
+    #slideshow img {
+        margin-top: 0%;
     }
 }
 
@@ -1318,12 +1344,13 @@ footer p {
     .prev, .next {
         font-size: 16px;
         padding: 10px;
-        top: 35%;
+        top: 32%;
         margin-top: 0;
     }
 
     .next {
         right: 14%;
+        left: 63%;
     }
 
     .item {
@@ -1384,4 +1411,20 @@ footer p {
     #top-img {
         margin-top: 35%;
      }
+
+    .slide {
+        margin-top: 35%;
+    }
+
+    .prev, .next {
+        top: 34%;
+    }
+
+    .next {
+        left: 76%;
+    }
+
+    #slideshow img {
+        height: 370px;
+    }
 }

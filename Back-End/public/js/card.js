@@ -23,17 +23,11 @@ for(let elem of links) {
 var index = 1;
 show(index);
 
-function setCurrent(n) {
-    show(index = n);
-}
-
 function swipe(n) {
   show(index += n);
 }
 
 function show(n) {
-  var i;
-  var images = document.getElementsByClassName("thumbnail");
   var slides = document.getElementsByClassName("slide");
 
   if (n < 1) {
@@ -42,13 +36,8 @@ function show(n) {
   if (n > slides.length) {
     index = 1;
   }
-  for (i = 0; i < slides.length; i++) {
+  for (let i = 0; i < slides.length; i++) {
       slides[i].style.display = "none";
   }
-  for (i = 0; i < images.length; i++) {
-      images[i].className = images[i].className.replace(" active", "");
-  }
-  images[index-1].className += " active";
-  slides[index-1].style.marginTop = "40px";
   slides[index-1].style.display = "block";
 }
