@@ -4,8 +4,8 @@
 function updateFiltersHeight(filterButton, filtersSection) {
   const activeFilterList = document.querySelector('.filter-list.show');
   const activeSubFilterLists = activeFilterList
-    ? activeFilterList.querySelectorAll('.sub-filter-list.show')
-    : [];
+      ? activeFilterList.querySelectorAll('.sub-filter-list.show')
+      : [];
   let totalHeight = filterButton.scrollHeight + 89;
 
   // Check if the device is mobile
@@ -17,7 +17,7 @@ function updateFiltersHeight(filterButton, filtersSection) {
 
   if (activeFilterList) {
     const filterButtons =
-      activeFilterList.querySelectorAll('.sub-filter-button');
+        activeFilterList.querySelectorAll('.sub-filter-button');
 
     filterButtons.forEach((button) => {
       totalHeight += button.scrollHeight;
@@ -70,8 +70,8 @@ filterButton.addEventListener('click', function () {
 // Close filter list when animation ends
 filterList.addEventListener('animationend', function (event) {
   if (
-    event.animationName === 'slideBottomUp' &&
-    !filterList.classList.contains('show')
+      event.animationName === 'slideBottomUp' &&
+      !filterList.classList.contains('show')
   ) {
     filterList.style.display = 'none';
   }
@@ -101,8 +101,8 @@ document.querySelectorAll('.sub-filter-button').forEach((button) => {
 document.querySelectorAll('.sub-filter-list').forEach((subFilterList) => {
   subFilterList.addEventListener('animationend', function (event) {
     if (
-      event.animationName === 'slideBottomUp' &&
-      !filterList.classList.contains('hide')
+        event.animationName === 'slideBottomUp' &&
+        !filterList.classList.contains('hide')
     ) {
       subFilterList.style.display = 'none';
     }
@@ -155,38 +155,6 @@ scrollToTopButton.addEventListener('click', function () {
     top: 0,
     behavior: 'smooth',
   });
-});
-
-// Mobile menu functionality
-const mobileMenuIcon = document.getElementById('mobile-menu-icon');
-const mobileMenu = document.getElementById('mobile-menu');
-
-mobileMenuIcon.addEventListener('click', function () {
-  if (mobileMenu.classList.contains('show')) {
-    mobileMenu.classList.remove('show');
-    mobileMenu.classList.add('hide');
-  } else {
-    mobileMenu.style.display = 'block';
-    mobileMenu.classList.remove('hide');
-    mobileMenu.classList.add('show');
-  }
-});
-
-document.addEventListener('click', function (event) {
-  if (
-    !mobileMenu.contains(event.target) &&
-    !mobileMenuIcon.contains(event.target)
-  ) {
-    mobileMenu.classList.remove('show');
-    mobileMenu.classList.add('hide');
-  }
-});
-
-// Close mobile menu when animation ends
-mobileMenu.addEventListener('animationend', function (event) {
-  if (event.animationName === 'slideUp') {
-    mobileMenu.style.display = 'none';
-  }
 });
 
 // Clickability of the product card on the home page
@@ -295,7 +263,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Handle search button click
   const searchInput = document.querySelector('#search-container input#search');
   const searchButton = document.querySelector(
-    '#search-container span._icon-search'
+      '#search-container span._icon-search'
   );
 
   // Add an event listener to the search button to handle click events
@@ -303,7 +271,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchQuery = searchInput.value.trim();
     // Construct the URL for the search request, including query parameters for the search term and pagination
     const url = `/products/search?search=${encodeURIComponent(
-      searchQuery
+        searchQuery
     )}&page=1&limit=15`;
     try {
       // Fetch the search results from the server
