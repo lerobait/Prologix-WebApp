@@ -50,7 +50,7 @@ header nav ul li {
 header nav ul li a {
     padding: 1.5vw;
     color: white;
-    font-size: 17px;
+    font-size: 20px;
     display: block;
     transition: background 0.3s ease, border-radius 0.3s ease;
     border-radius: 10px;
@@ -577,6 +577,7 @@ footer p {
     margin-top: 20px;
     height: 40%;
     padding: 0 10px;
+    align-items: center;
 }
 
 .grid-container > div {
@@ -614,6 +615,22 @@ footer p {
     -webkit-box-orient: vertical;
     overflow-wrap: break-word;
     text-overflow: ellipsis;
+}
+
+.card-img {
+    width: 230px;
+    height: 100%;
+    background-color: white;
+    margin-left: 20px;
+    border-radius: 10%;
+}
+
+.card-img img {
+    border-radius: 10%;
+    margin: 0;
+    object-fit: scale-down;
+    width: 230px;
+    height: 230px;
 }
 
 .name {
@@ -735,7 +752,169 @@ footer p {
   
 .next {
     border-radius: 3px 0 0 3px;
-    right: 0;
+    right: 2.6%;
+    left: 90.4%;
+}
+  
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.main-container {
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Styling for info.html */
+
+/* Setting the font size and color for the text */
+
+.about-brand {
+    font-size: 20px;
+    color: white;
+    padding-bottom: 0;
+}
+  
+/* Styling for brand slogan */
+  
+#brand-slogan {
+    background-color: #b1b8d3;
+}
+  
+#brand-slogan p {
+    color: black;
+    font-size: 28px;
+    text-align: right;
+    margin-right: 2%;
+    margin-bottom: 45%;
+}
+  
+#slogan-images {
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    align-items: flex-end;
+}
+  
+.column-img {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+  
+#top-img {
+    width: 59%;
+}
+  
+#bottom-img {
+    margin-top: 51px;
+    width: 71%;
+}
+  
+#center-img {
+    width: 19%;
+    height: 10%;
+    margin-left: 0.1%;
+}
+  
+#info-logo {
+    width: 60%;
+    margin-left: 49%;
+    margin-top: 0; 
+    margin-bottom: auto;
+}
+  
+#right-img {
+    width: 73.5%;
+    height: 1%;
+    margin-left: 26.5%;
+    align-self: flex-end;
+}
+  
+/* Styling for basic info */
+  
+#basic-info {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: row;
+}
+  
+#basic-info img {
+    height: auto;
+}
+  
+#top-text {
+    margin: 60px 0 0 30px;
+}
+  
+#top-images {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+  
+#tv1 {
+    width: 50%;
+    margin-top: 60px;
+    margin-bottom: 20px;
+}
+  
+#tv2 {
+    width: 35%;
+    margin-right: 67.5%;
+    margin-bottom: 60px;
+}
+  
+#basic-info p, #basic-info ul {
+    flex: 1;
+}
+  
+/* Styling for range info */
+
+#range-info {
+    border-top: 1px solid #191f28;
+    border-bottom: 1px solid #191f28;
+}
+  
+#range-info img {
+    width: 40%;
+    margin-left: 33.7%;
+    margin-top: 60px;
+}
+  
+#range-info p {
+    margin-left: 59.5%;
+    padding-bottom: 60px;
+}
+  
+/* Styling for aim info */
+  
+#aim-info p {
+    margin: 60px 0;
+    text-align: center;
+}
+  
+#left-blocks, #right-blocks {
+    width: 30%;
+    margin-top: 60px;
+}
+  
+#left-blocks {
+    margin-left: 6.2%;
+}
+  
+#right-blocks {
+    margin-left: 27.9%;
+}
+  
+#computers {
+    width: 45%;
+    height:auto;
+    margin-top: 90px;
+    margin-left: 28.3%; 
 }
   
 .column {
@@ -809,6 +988,17 @@ footer p {
     }
 }
 
+@media (max-width: 1024px) {
+    .nav-icons,
+    nav {
+        display: none;
+    }
+
+    ._icon-list {
+        display: block;
+    }
+}
+
 @media (max-width: 992px) {
     #list-images a img {
         width: 140px;
@@ -852,15 +1042,6 @@ footer p {
 }
 
 @media (max-width: 768px) {
-    .nav-icons,
-    nav {
-        display: none;
-    }
-
-    ._icon-list {
-        display: block;
-    }
-
     #elements {
         height: 25vh;
         margin-top: 50px;
@@ -917,6 +1098,10 @@ footer p {
     #filters, #categories, #products {
         width: 100%;
         margin-bottom: 20px;
+    }
+
+    #categories {
+        margin-top: -40px;
     }
 
     #content {
