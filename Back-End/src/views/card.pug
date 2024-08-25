@@ -7,13 +7,9 @@ block content
         .container
           each image, index in product.image_link
             .slide
-              img(src=image, style="width:100%")
+              img(src=image)
           a.prev(onclick="swipe(-1)") ❮
           a.next(onclick="swipe(1)") ❯
-          .row
-            each image, index in product.image_link
-              .column
-                img.thumbnail(src=image, style="width:100%", onclick=`setCurrent(${index + 1})`)
       section#info
         p#product-name #{product.title}
         .tabs-container
