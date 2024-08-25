@@ -1,3 +1,5 @@
+<!--Author: Dmytro Volkov-->
+
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('registration-form');
     const password = document.getElementById('password');
