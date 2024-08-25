@@ -1,7 +1,7 @@
 # Ignore node_modules directory in Back-End
-Back-End/node_modules/
+node_modules/
 
 # Ignore environment files
-Back-End/.env
+.env
 
 .idea
