@@ -60,14 +60,6 @@ document.addEventListener('DOMContentLoaded', function () {
       elementsToToggle.nameHeaderAbout.classList.toggle('light', isLightMode);
       elementsToToggle.backgroundAbout.classList.toggle('light', isLightMode);
       elementsToToggle.roleAbout.forEach((role) => role.classList.toggle('light', isLightMode));
-    } else if (containsComponentsHtml) {
-      elementsToToggle.filters.classList.toggle('light', isLightMode);
-      elementsToToggle.categories.classList.toggle('light', isLightMode);
-      elementsToToggle.listImg.classList.toggle('light', isLightMode);
-    } else if (containsCabinetHtml) {
-      elementsToToggle.filters.classList.toggle('light', isLightMode);
-      elementsToToggle.categories.classList.toggle('light', isLightMode);
-      elementsToToggle.listImg.classList.toggle('light', isLightMode);
     }
   }
 

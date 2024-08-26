@@ -1,20 +1,19 @@
 <!--Author: Dmytro Volkov-->
 
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Prologix</title>
-    <link rel="icon" href="./img/logo-icon-2.png" type="image/png">
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/iconsFont.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/iconsFont.css">
 </head>
 <body>
 <header>
-    <a href="overviews.html" class="logo"><img src="./img/logo.png" alt="Logo" width="260px" height="65px"></a>
+    <a href="index.html" class="logo"><img src="./img/logo.png" alt="Logo" width="260px" height="65px"></a>
     <nav>
         <ul>
-            <li><a href="overviews.html">Головна</a></li>
+            <li><a href="index.html">Головна</a></li>
             <li><a href="about.html">Про нас</a></li>
             <li><a href="components.html">Компоненти</a></li>
             <li><a href="info.html">Інформація</a></li>
@@ -25,43 +24,34 @@
             <input type="checkbox">
             <span class="move"></span>
         </label>
-        <a href="#" class="_icon-heart nav-icons"></a>
-        <a href="#" class="_icon-balance-scale nav-icons"></a>
-        <a href="#" class="_icon-list" id="mobile-menu-icon"></a>
-        <a href="authorization.html" class="_icon-sign-in-alt"></a>
+        <a href="#" class="_icon-heart"></a>
+        <a href="#" class="_icon-balance-scale"></a>
+        <a href="#" class="_icon-list"></a>
     </div>
     <div id="mobile-menu" class="mobile-menu">
         <ul>
-            <li><a href="overviews.html"><span class="_icon-home"></span> Головна</a></li>
+            <li><a href="index.html"><span class="_icon-home"></span> Головна</a></li>
             <li><a href="about.html"><span class="_icon-users"></span> Про нас</a></li>
             <li><a href="components.html"><span class="_icon-seedling"></span> Компоненти</a></li>
             <li><a href="info.html"><span class="_icon-exclamation-circle"></span> Інформація</a></li>
+
         </ul>
     </div>
 </header>
-
 <main>
-    <div id="technologies">
-        <div class="technology-direction">
-            <h2>FrontEnd</h2>
-            <div class="images-row">
-                <img src="./img/html-logo.png" alt="1">
-                <img src="./img/css-logo.png" alt="1">
-                <img src="./img/JavaScript-Logo.png" alt="1">
-            </div>
-        </div>
-        <div id="back-end-div" class="technology-direction">
-            <h2>BackEnd</h2>
-            <div class="images-row">
-                <img src="./img/nodejs-logo.png" alt="1">
-                <img src="./img/docker-logo.png" alt="1">
-                <img src="./img/postgresql-logo.png" alt="1">
-            </div>
-        </div>
+    <div id="content">
+        <section id="registration-authorization">
+            <form id="authorization-form" action="http://localhost:3000/api/user/login" method="POST">
+                <h2>Авторизація</h2>
+                <input type="text" name="login" placeholder="Логін" required>
+                <input type="password" id="password" name="password" placeholder="Введіть пароль" required>
+                <button type="submit">Війти</button>
+                <a>Все ще нема акаунту?</a> <a id="transition" href="registration.html">Зареєструватися</a>
+            </form>
+        </section>
     </div>
     <button id="scroll-to-top" class="_icon-arrow-circle-up"></button>
 </main>
-
 <footer>
     <div class="footer-content">
         <div class="footer-info">
@@ -74,7 +64,8 @@
         </div>
     </div>
 </footer>
-<script src="./js/script.js"></script>
+<script src="./js/account.js"></script>
 <script src="./js/switch_and_button.js"></script>
+<script src="./js/script.js"></script>
 </body>
 </html>
