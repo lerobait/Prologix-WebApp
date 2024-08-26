@@ -17,4 +17,6 @@ router.get('/info', viewsController.renderInfo);
 
 router.get('/about', viewsController.renderAbout);
 
+router.get('/components', viewsController.renderComponents);
+
 module.exports = router;

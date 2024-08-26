@@ -70,6 +70,13 @@ class ViewsController {
       title: 'Prologix - Про нас', // Optional title for the page
     });
   });
+
+  // Method to render the components page with no additional parameters
+  renderComponents = catchAsync(async (req, res) => {
+    res.status(200).render('components', {
+      title: 'Prologix - Компоненти', // Optional title for the page
+    });
+  });
 }
 
 module.exports = new ViewsController();
