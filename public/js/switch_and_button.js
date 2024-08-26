@@ -40,10 +40,15 @@ document.addEventListener('DOMContentLoaded', function () {
     elementsToToggle.mobileMenu.classList.toggle('light', isLightMode);
     elementsToToggle.textForMobile.forEach((text) => text.classList.toggle('light', isLightMode));
     elementsToToggle.li.forEach((li) => li.classList.toggle('light', isLightMode));
+    for (const [key, value] of Object.entries(elementsToToggle)) {
+      console.log(key, value);
+    }
 
     // Checking whether the user is on the home page
     const url = window.location.href;
     const containsIndexHtml = url.includes('overviews.html');
+    const containsComponentsHtml = url.includes('components.html');
+    const containsCabinetHtml = url.includes('cabinet.html');
     const containsAboutHtml = url.includes('about.html');
     if (containsIndexHtml) {
       elementsToToggle.filters.classList.toggle('light', isLightMode);
@@ -55,6 +60,14 @@ document.addEventListener('DOMContentLoaded', function () {
       elementsToToggle.nameHeaderAbout.classList.toggle('light', isLightMode);
       elementsToToggle.backgroundAbout.classList.toggle('light', isLightMode);
       elementsToToggle.roleAbout.forEach((role) => role.classList.toggle('light', isLightMode));
+    } else if (containsComponentsHtml) {
+      elementsToToggle.filters.classList.toggle('light', isLightMode);
+      elementsToToggle.categories.classList.toggle('light', isLightMode);
+      elementsToToggle.listImg.classList.toggle('light', isLightMode);
+    } else if (containsCabinetHtml) {
+      elementsToToggle.filters.classList.toggle('light', isLightMode);
+      elementsToToggle.categories.classList.toggle('light', isLightMode);
+      elementsToToggle.listImg.classList.toggle('light', isLightMode);
     }
   }
 
@@ -68,6 +81,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Switch theme functionality
   switchTheme.addEventListener('change', function () {
+    console.log('Theme switch triggered');
     const isLightMode = this.checked;
     applyTheme(isLightMode);
     localStorage.setItem('theme', isLightMode ? 'light' : 'default');
