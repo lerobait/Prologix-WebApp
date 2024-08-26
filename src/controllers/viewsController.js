@@ -77,6 +77,27 @@ class ViewsController {
       title: 'Prologix - Компоненти', // Optional title for the page
     });
   });
+
+  // Method to render the authorization page with no additional parameters
+  renderAuthorization = catchAsync(async (req, res) => {
+    res.status(200).render('authorization', {
+      title: 'Prologix - authorization' // Optional title for the page
+    })
+  })
+
+  // Method to render the registration page with no additional parameters
+  renderRegistration = catchAsync(async (req, res) => {
+    res.status(200).render('registration', {
+      title: 'Prologix - registration' // Optional title for the page
+    })
+  })
+
+  // Method to render the profile page with no additional parameters
+  renderProfile = catchAsync(async (req, res) => {
+    res.status(200).render('profile', {
+      title: 'Prologix - profile' // Optional title for the page
+    })
+  })
 }
 
 module.exports = new ViewsController();

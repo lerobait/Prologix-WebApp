@@ -1,10 +1,6 @@
 # Prologix-WebApp
 
 ## Launch server part of the project
-Enter server folder:  
-```
-cd Back-End
-```
 
 Get an environmental file:  
 ```

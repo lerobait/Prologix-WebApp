@@ -207,6 +207,13 @@ footer.light {
     position: relative;
     color: #ffffff;
     font-size: 30px;
+    top: 3px;
+}
+
+._icon-profile {
+    position: relative;
+    color: #ffffff;
+    font-size: 30px;
     padding: 0 20px 0 0;
     top: 3px;
 }

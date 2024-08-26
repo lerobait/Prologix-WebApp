@@ -100,3 +100,7 @@
 ._icon-user-circle:before {
   content: "\e911";
 }
+
+._icon-profile:before {
+  content: "\e910"
+}

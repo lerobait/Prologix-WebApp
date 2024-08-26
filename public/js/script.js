@@ -1,5 +1,13 @@
 // Author: Anna Geenko, Yana Levchenko, Artem Nikulin
 
+if (localStorage.getItem('accessToken')) {
+  document.querySelector('._icon-sign-in-alt').style.display = 'none'
+  document.querySelector('._icon-profile').style.display = 'block'
+} else {
+  document.querySelector('._icon-profile').style.display = 'none'
+  document.querySelector('._icon-sign-in-alt').style.display = 'block'
+}
+
 // Function to update the height of the filters section based on the active filters
 function updateFiltersHeight(filterButton, filtersSection) {
   const activeFilterList = document.querySelector('.filter-list.show');

@@ -19,4 +19,10 @@ router.get('/about', viewsController.renderAbout);
 
 router.get('/components', viewsController.renderComponents);
 
+router.get('/login', viewsController.renderAuthorization);
+
+router.get('/registration', viewsController.renderRegistration);
+
+router.get('/profile', viewsController.renderProfile);
+
 module.exports = router;

@@ -1,0 +1,13 @@
+extends base
+
+block content
+    main
+        #content
+            #cabinet
+                img(src="./img/user-cabinet.png")
+                h1 Особистий кабінет
+                a Логін:
+                    span#user-login
+                button.cabinet-button#logout-button Вийти
+        button#scroll-to-top._icon-arrow-circle-up
+    script(type="module" src="/js/profile.js")
